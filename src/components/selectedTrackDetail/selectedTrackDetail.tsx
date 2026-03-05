@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { TTracks } from '@common/types';
-import { columnStyles, h2Styles } from '../app/styles';
+import { columnStyles, h2Styles } from '../dashboard/styles';
 import {
   warningStyle,
   selectedTrackTitleStyle,
