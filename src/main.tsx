@@ -6,7 +6,7 @@ import './i18n';
 import { App } from './components/app';
 import { DashboardPage } from './components/dashboard/DashboardPage';
 import { TracksListRoute } from './components/tracksList';
-// import { SelectedTrackDetailRoute } from './components/selectedTrackDetail';
+import { SelectedTrackDetailRoute } from './components/selectedTrackDetail';
 
 const router = createHashRouter(
   [
@@ -18,12 +18,11 @@ const router = createHashRouter(
           path: '/',
           element: <DashboardPage />,
           children: [
-            { path: 'trackList', element: <TracksListRoute /> },
-            // { path: 'tracks/:id', element: <SelectedTrackDetailRoute /> },
+            { index: true, element: <TracksListRoute /> },
+            { path: 'selectedTrackDetail', element: <SelectedTrackDetailRoute /> },
           ],
         },
         { path: '*', element: <div>404</div> },
-        { path: 'test', element: <div>TEST</div> },
       ],
     },
   ],

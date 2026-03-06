@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { blockStyle } from './styles';
 import type { TTracks } from '../../common/types';
-import { TracksList } from '../tracksList';
 import { API_BASE_URL, API_HEADERS } from '../../common/constants';
 import { TracksStatus } from './tracksStatus';
+import { Outlet } from 'react-router-dom';
 // import { client } from '@/shared/client';
 
 // todo: разобраться со структурой
@@ -13,6 +13,7 @@ export const DashboardPage = () => {
   const [selectedTrackId, setSelectedTrackId] = useState<number | null>(null);
   const [selectedTrack, setSelectedTrack] = useState<TTracks | null>(null);
   const [tracks, setTracks] = useState<TTracks[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function loadTracks() {
@@ -22,23 +23,32 @@ export const DashboardPage = () => {
       if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
 
       const data = await res.json();
-      console.log(data.data);
+
       setTracks(data.data);
+      setIsLoading(false);
     }
     loadTracks();
   }, []);
 
+  const isEmpty = !isLoading && tracks.length === 0;
+  const isReady = !isLoading && tracks.length > 0;
+
   return (
     <div className={blockStyle}>
       {!tracks || !tracks.length ? (
-        <TracksStatus loading={!tracks} isTracksEmpty={!tracks.length} />
+        <TracksStatus isLoading={isLoading} isTracksEmpty={!tracks.length} />
       ) : (
-        <TracksList
-          tracks={tracks}
-          selectedTrackId={selectedTrackId}
-          setSelectedTrackId={setSelectedTrackId}
-          setSelectedTrack={setSelectedTrack}
-          selectedTrack={selectedTrack}
+        <Outlet
+          context={{
+            tracks,
+            selectedTrackId,
+            setSelectedTrackId,
+            selectedTrack,
+            setSelectedTrack,
+            isLoading,
+            isEmpty,
+            isReady,
+          }}
         />
       )}
     </div>

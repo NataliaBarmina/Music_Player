@@ -3,16 +3,16 @@ import { Preloader } from '@common/preloader';
 import { useTranslation } from 'react-i18next';
 
 type TTracksStatus = {
-  loading: boolean;
+  isLoading: boolean;
   isTracksEmpty: boolean;
   // error: string | null;
 };
 
-export const TracksStatus = ({ loading, isTracksEmpty }: TTracksStatus) => {
+export const TracksStatus = ({ isLoading, isTracksEmpty }: TTracksStatus) => {
   const { t } = useTranslation();
   return (
     <>
-      {loading && <Preloader />}
+      {isLoading && <Preloader />}
 
       {/* {error && (
             <h2 className={warningBlockStyle}>
@@ -20,7 +20,7 @@ export const TracksStatus = ({ loading, isTracksEmpty }: TTracksStatus) => {
             </h2>
         )} */}
 
-      {isTracksEmpty && (
+      {!isLoading && isTracksEmpty && (
         <h2 className={warningBlockStyle}>
           <span className={warningStyle}>{t('warning.noTracks')}</span>
         </h2>

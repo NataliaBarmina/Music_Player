@@ -10,12 +10,10 @@ import {
 import type { TTracks } from '@common/types';
 import { API_BASE_URL, API_HEADERS } from '@common/constants';
 import { useEffect } from 'react';
-import { SelectedTrackDetail } from '../selectedTrackDetail';
+import { useNavigate } from 'react-router-dom';
 
 //todo: разобраться с проигрыванием треков, чтобы трек в невыбранном блоке не проигрывался
 //todo: разобраться с выделением блока при клике на аудио
-
-//todo- переименовать компоненту - контейнерная, разделить на 2, сделать роутинг и переключаться
 
 type TTracksList = {
   selectedTrackId: number | null;
@@ -30,11 +28,9 @@ export const TracksList = ({
   tracks,
   setSelectedTrackId,
   setSelectedTrack,
-  selectedTrack,
 }: TTracksList) => {
   const { t } = useTranslation();
-
-  // const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!selectedTrackId) return;
@@ -46,21 +42,8 @@ export const TracksList = ({
       .then((json) => setSelectedTrack(json.data));
   }, [selectedTrackId, setSelectedTrack]);
 
-  // const isEmpty = !selectedTrack;
-  // const isLoading = selectedTrack && selectedTrack?.id !== selectedTrackId;
-  // const isReady = selectedTrack?.id === selectedTrackId;
-
   return (
     <div>
-      {/* {selectedTrackId && (
-        <SelectedTrackDetail
-          selectedTrack={selectedTrack}
-          isEmpty={!selectedTrack}
-          isLoading={selectedTrack && selectedTrack?.id !== selectedTrackId}
-          isReady={selectedTrack?.id === selectedTrackId}
-        />
-      )} */}
-      {/* {!selectedTrackId && ( */}
       <div>
         <h2 className={h2Styles}>{t('header.tracksList')}</h2>
         <button
@@ -79,6 +62,7 @@ export const TracksList = ({
               className={`${track.id === selectedTrackId ? selectTrackStyle : tracksStyles}`}
               onClick={() => {
                 setSelectedTrackId(track.id);
+                navigate('/selectedTrackDetail');
               }}
             >
               <li>
@@ -89,7 +73,6 @@ export const TracksList = ({
           ))}
         </ul>
       </div>
-      {/* )} */}
     </div>
   );
 };
