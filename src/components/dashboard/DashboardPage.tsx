@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
-import { playerStyle, blockStyle } from './styles';
+import { blockStyle } from './styles';
+// import { playerStyle} from './styles';
 import type { TTracks } from '@common/types';
 import { TracksList } from '../tracksList';
 import { API_BASE_URL, API_HEADERS } from '@common/constants';
-import { SelectedTrackDetail } from '../selectedTrackDetail';
+// import { SelectedTrackDetail } from '../selectedTrackDetail';
 import { TracksStatus } from './tracksStatus';
 // import { client } from '@/shared/client';
 
 //todo:сделать роутинг, в том числе страница ошибки
 // todo: сделать навигац панель
 // todo: разобраться со структурой
+// todo: github actions
 
-export function App() {
+export function DashboardPage() {
   const [selectedTrackId, setSelectedTrackId] = useState<number | null>(null);
   const [selectedTrack, setSelectedTrack] = useState<TTracks | null>(null);
   const [tracks, setTracks] = useState<TTracks[]>([]);
@@ -46,28 +48,26 @@ export function App() {
       controller.abort();
     };
   }, []);
-
+  // todo: если ошибка то переходим на TracksStatus, иначе на TracksList
   return (
-    <>
-      <div className={blockStyle}>
-        <TracksStatus loading={!tracks} error={error} isTracksEmpty={!tracks.length} />
+    <div className={blockStyle}>
+      {/* <TracksStatus loading={!tracks} error={error} isTracksEmpty={!tracks.length} /> */}
 
-        <div className={playerStyle}>
-          <TracksList
-            tracks={tracks}
-            selectedTrackId={selectedTrackId}
-            setSelectedTrackId={setSelectedTrackId}
-            setSelectedTrack={setSelectedTrack}
-          />
+      {/* <div className={playerStyle}> */}
+      <TracksList
+        tracks={tracks}
+        selectedTrackId={selectedTrackId}
+        setSelectedTrackId={setSelectedTrackId}
+        setSelectedTrack={setSelectedTrack}
+      />
 
-          <SelectedTrackDetail
+      {/* <SelectedTrackDetail
             selectedTrack={selectedTrack}
             isEmpty={!selectedTrack}
             isLoading={selectedTrack && selectedTrack?.id !== selectedTrackId}
             isReady={selectedTrack?.id === selectedTrackId}
-          />
-        </div>
-      </div>
-    </>
+          /> */}
+      {/* </div> */}
+    </div>
   );
 }

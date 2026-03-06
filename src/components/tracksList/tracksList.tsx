@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { columnStyles, h2Styles } from '../app/styles';
+import { columnStyles, h2Styles } from '../dashboard/styles';
 import {
   buttonStyle,
   trackTitleStyles,
@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 
 //todo: разобраться с проигрыванием треков, чтобы трек в невыбранном блоке не проигрывался
 //todo: разобраться с выделением блока при клике на аудио
+//todo: при выборе трека переходим на  <SelectedTrackDetail
 
 type TTracksList = {
   selectedTrackId: number | null;
