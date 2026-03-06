@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { TTracks } from '@common/types';
-import { columnStyles, h2Styles } from '../dashboard/styles';
+import { h2Styles } from '../dashboard/styles';
 import {
   warningStyle,
   selectedTrackTitleStyle,
@@ -25,7 +25,7 @@ export const SelectedTrackDetail = ({
   const { t } = useTranslation();
 
   return (
-    <div className={columnStyles}>
+    <div>
       <h2 className={h2Styles}>{t('header.detail')}</h2>
 
       {isEmpty && (
@@ -48,4 +48,3 @@ export const SelectedTrackDetail = ({
     </div>
   );
 };
-export default SelectedTrackDetail;

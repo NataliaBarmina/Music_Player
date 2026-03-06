@@ -5,17 +5,25 @@ import './index.css';
 import './i18n';
 import { App } from './components/app';
 import { DashboardPage } from './components/dashboard/DashboardPage';
-// import TracksList from './components/tracksList';
+import { TracksListRoute } from './components/tracksList';
+// import { SelectedTrackDetailRoute } from './components/selectedTrackDetail';
 
 const router = createHashRouter(
   [
     {
       path: '/',
-      element: <App></App>,
+      element: <App />,
       children: [
-        { index: true, element: <DashboardPage /> },
+        {
+          path: '/',
+          element: <DashboardPage />,
+          children: [
+            { path: 'trackList', element: <TracksListRoute /> },
+            // { path: 'tracks/:id', element: <SelectedTrackDetailRoute /> },
+          ],
+        },
         { path: '*', element: <div>404</div> },
-        // { path: '/tracksList', element: <TracksList /> },
+        { path: 'test', element: <div>TEST</div> },
       ],
     },
   ],

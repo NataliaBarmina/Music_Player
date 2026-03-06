@@ -1,10 +1,11 @@
 import { Outlet } from 'react-router-dom';
+import { NavPanel } from './navPanel';
 
 export const App = () => {
   return (
     <div className="w-[99vw]">
-      <div className=" flex gap-2 w-[70%] mx-auto">
-        <div className="bg-green-950/40 text-center text-2xl w-[40%]">Navpanel</div>
+      <div className=" flex w-[70%] mx-auto border-t-8 border-green-950/40 border-r-8 border-b-8">
+        <NavPanel />
         <Outlet />
       </div>
     </div>
