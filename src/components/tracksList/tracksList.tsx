@@ -7,40 +7,15 @@ import {
   selectTrackStyle,
   tracksStyles,
 } from './styles';
-import type { TTracks } from '@common/types';
-import { API_BASE_URL, API_HEADERS } from '@common/constants';
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import type { TTracksList } from './tracksListRoute';
 
 //todo: разобраться с проигрыванием треков, чтобы трек в невыбранном блоке не проигрывался
 //todo: разобраться с выделением блока при клике на аудио
 
-type TTracksList = {
-  selectedTrackId: number | null;
-  tracks: TTracks[];
-  selectedTrack: TTracks | null;
-  setSelectedTrackId: (id: number | null) => void;
-  setSelectedTrack: (track: TTracks | null) => void;
-};
-
-export const TracksList = ({
-  selectedTrackId,
-  tracks,
-  setSelectedTrackId,
-  setSelectedTrack,
-}: TTracksList) => {
+export const TracksList = ({ selectedTrackId, tracks, setSelectedTrackId }: TTracksList) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!selectedTrackId) return;
-
-    fetch(`${API_BASE_URL}/${selectedTrackId}`, {
-      headers: API_HEADERS,
-    })
-      .then((res) => res.json())
-      .then((json) => setSelectedTrack(json.data));
-  }, [selectedTrackId, setSelectedTrack]);
 
   return (
     <div>
@@ -50,7 +25,6 @@ export const TracksList = ({
           className={buttonStyle}
           onClick={() => {
             setSelectedTrackId(null);
-            setSelectedTrack(null);
           }}
         >
           {t('button.resetSelection')}

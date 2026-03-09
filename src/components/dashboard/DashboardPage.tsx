@@ -11,7 +11,6 @@ import { Outlet } from 'react-router-dom';
 
 export const DashboardPage = () => {
   const [selectedTrackId, setSelectedTrackId] = useState<number | null>(null);
-  const [selectedTrack, setSelectedTrack] = useState<TTracks | null>(null);
   const [tracks, setTracks] = useState<TTracks[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,19 +34,13 @@ export const DashboardPage = () => {
 
   return (
     <div className={blockStyle}>
-      {!tracks || !tracks.length ? (
-        <TracksStatus isLoading={isLoading} isTracksEmpty={!tracks.length} />
-      ) : (
+      {(isLoading || isEmpty) && <TracksStatus isLoading={isLoading} isEmpty={isEmpty} />}
+      {isReady && (
         <Outlet
           context={{
             tracks,
             selectedTrackId,
             setSelectedTrackId,
-            selectedTrack,
-            setSelectedTrack,
-            isLoading,
-            isEmpty,
-            isReady,
           }}
         />
       )}

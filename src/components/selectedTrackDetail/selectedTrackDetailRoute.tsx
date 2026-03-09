@@ -1,21 +1,16 @@
 import { SelectedTrackDetail } from './selectedTrackDetail';
 import { useOutletContext } from 'react-router-dom';
-import type { TTracks } from '@/common/types';
 
-type DashboardOutletContext = {
-  selectedTrack: TTracks | null;
-  isLoading: boolean;
-  isEmpty: boolean;
-  isReady: boolean;
+export type TSelectedTrackDetail = {
+  selectedTrackId: string | null;
+  setSelectedTrackId: React.Dispatch<React.SetStateAction<string | null>>;
 };
 export const SelectedTrackDetailRoute = () => {
-  const { isEmpty, isLoading, isReady, selectedTrack } = useOutletContext<DashboardOutletContext>();
+  const { selectedTrackId, setSelectedTrackId } = useOutletContext<TSelectedTrackDetail>();
   return (
     <SelectedTrackDetail
-      selectedTrack={selectedTrack}
-      isLoading={isLoading}
-      isEmpty={isEmpty}
-      isReady={isReady}
+      selectedTrackId={selectedTrackId}
+      setSelectedTrackId={setSelectedTrackId}
     />
   );
 };

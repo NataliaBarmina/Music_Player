@@ -6,7 +6,7 @@ export const texts = {
   },
   warning: {
     noTracks: 'No tracks',
-    noSelectedTrack: 'Track is not selected',
+    noText: 'No text',
   },
   button: {
     resetSelection: ' Reset selection',
