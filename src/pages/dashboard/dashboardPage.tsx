@@ -6,7 +6,7 @@ import { TracksStatus } from './tracksStatus';
 import { Outlet } from 'react-router-dom';
 // import { client } from '@/shared/client';
 
-// todo: github actions
+// todo: спрятать ключ
 
 export const DashboardPage = () => {
   const [selectedTrackId, setSelectedTrackId] = useState<number | null>(null);
