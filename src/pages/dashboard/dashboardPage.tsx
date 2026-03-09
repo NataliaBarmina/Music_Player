@@ -49,5 +49,4 @@ export const DashboardPage = () => {
 
 // const response = await client.GET('/playlists/tracks');
 // const data = response.data;
-// console.log(data?.data);
 // setTracks(data?.data);
