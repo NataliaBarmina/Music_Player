@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { blockStyle } from './styles';
-import type { TTracks } from '../../common/types';
-import { API_BASE_URL, API_HEADERS } from '../../common/constants';
+import type { TTracks } from '../../shared/types';
+import { API_BASE_URL, API_HEADERS } from '../../shared/constants';
 import { TracksStatus } from './tracksStatus';
 import { Outlet } from 'react-router-dom';
 // import { client } from '@/shared/client';
 
-// todo: разобраться со структурой
 // todo: github actions
 
 export const DashboardPage = () => {

@@ -1,6 +1,6 @@
 import { useOutletContext } from 'react-router-dom';
 import { TracksList } from './tracksList';
-import type { TTracks } from '@/common/types';
+import type { TTracks } from '@/shared/types';
 
 export type TTracksList = {
   tracks: TTracks[];

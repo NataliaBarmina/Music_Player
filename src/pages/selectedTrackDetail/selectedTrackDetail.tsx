@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import type { TTracks } from '@common/types';
-import { h2Styles } from '../dashboard/styles';
+import type { TTracks } from '@/shared/types';
+import { h2Styles } from '../../pages/dashboard/styles';
 import {
   warningStyle,
   selectedTrackTitleStyle,
   lyricHeaderStyle,
   lyricContentStyle,
 } from './styles';
-import { Preloader } from '@/common/preloader';
-import { API_BASE_URL, API_HEADERS } from '@common/constants';
+import { Preloader } from '@/components/preloader';
+import { API_BASE_URL, API_HEADERS } from '@/shared/constants';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import type { TSelectedTrackDetail } from './selectedTrackDetailRoute';

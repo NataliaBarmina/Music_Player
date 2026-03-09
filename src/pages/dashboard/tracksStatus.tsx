@@ -1,5 +1,5 @@
 import { warningBlockStyle, warningStyle } from './styles';
-import { Preloader } from '@common/preloader';
+import { Preloader } from '@/components/preloader';
 import { useTranslation } from 'react-i18next';
 
 type TTracksStatus = {

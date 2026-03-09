@@ -2,11 +2,11 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createHashRouter } from 'react-router-dom';
 import './index.css';
-import './i18n';
-import { App } from './components/app';
-import { DashboardPage } from './components/dashboard/DashboardPage';
-import { TracksListRoute } from './components/tracksList';
-import { SelectedTrackDetailRoute } from './components/selectedTrackDetail';
+import './i18n/i18n';
+import { App } from './app';
+import { DashboardPage } from '../pages/dashboard/dashboardPage';
+import { TracksListRoute } from '../pages/tracksList';
+import { SelectedTrackDetailRoute } from '../pages/selectedTrackDetail';
 
 const router = createHashRouter(
   [
