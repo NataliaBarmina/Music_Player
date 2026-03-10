@@ -10,9 +10,6 @@ import {
 import { useNavigate } from 'react-router-dom';
 import type { TTracksList } from './tracksListRoute';
 
-//todo: разобраться с проигрыванием треков, чтобы трек в невыбранном блоке не проигрывался
-//todo: разобраться с выделением блока при клике на аудио
-
 export const TracksList = ({ selectedTrackId, tracks, setSelectedTrackId }: TTracksList) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
