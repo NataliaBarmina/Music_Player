@@ -7,9 +7,6 @@ export const NavPanel = () => {
         <div>
           <Link to="/">СПИСОК ТРЕКОВ</Link>
         </div>
-        {/* <div>
-          <Link to="/selectedTrackDetail">ВЫБРАННЫЙ ТРЕК</Link>
-        </div> */}
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { NavPanel } from '../components/navPanel';
+import { NavPanel } from '@/components/navPanel';
 
 export const App = () => {
   return (

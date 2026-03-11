@@ -1,13 +1,13 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createHashRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './index.css';
 import './i18n/i18n';
 import { App } from './app';
-import { DashboardPage } from '../pages/dashboard/dashboardPage';
-import { TracksListRoute } from '../pages/tracksList';
-import { SelectedTrackDetailRoute } from '../pages/selectedTrackDetail';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { DashboardPage } from '@/pages/dashboard';
+import { TracksListRoute } from '@/pages/tracksList';
+import { SelectedTrackDetailRoute } from '@/pages/selectedTrackDetail';
 
 const router = createHashRouter(
   [

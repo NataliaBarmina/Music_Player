@@ -7,7 +7,6 @@ import { client } from '@/shared/api/client';
 import { ErrorPage } from '@/components/errorsPage';
 
 // todo: спрятать ключ
-// todo: алиасы сделать и проверить
 // todo: кнопка резет селекшен - убрать?
 // todo: одновременно проигрывать только одну песню
 

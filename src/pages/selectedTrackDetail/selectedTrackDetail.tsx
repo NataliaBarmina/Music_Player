@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { h2Styles } from '../../pages/dashboard/styles';
+import { h2Styles } from '@/pages/dashboard';
 import {
   warningStyle,
   selectedTrackTitleStyle,
