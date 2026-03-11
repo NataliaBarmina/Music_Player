@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import type { TSelectedTrackDetail } from './selectedTrackDetailRoute';
 import { useQuery } from '@tanstack/react-query';
 import { client } from '@/shared/api/client';
+import { ErrorPage } from '@/components/errorsPage';
 
 export const SelectedTrackDetail = ({
   selectedTrackId,
@@ -43,15 +44,12 @@ export const SelectedTrackDetail = ({
     },
   });
 
-  if (isError) {
-    return <div>Ошибка: {error instanceof Error ? error.message : 'Что-то пошло не так'}</div>;
-  }
-
   const isEmpty = !isLoading && !selectedTrack?.lyrics;
   const isReady = !isLoading;
 
   return (
     <div>
+      {isError && <ErrorPage error={error instanceof Error ? error : null} />}
       <h2 className={h2Styles}>{t('header.detail')}</h2>
       {isLoading && <Preloader />}
       {isReady && (

@@ -4,12 +4,12 @@ import { TracksStatus } from './tracksStatus';
 import { Outlet } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { client } from '@/shared/api/client';
+import { ErrorPage } from '@/components/errorsPage';
 
 // todo: спрятать ключ
 // todo: алиасы сделать и проверить
 // todo: кнопка резет селекшен - убрать?
 // todo: одновременно проигрывать только одну песню
-// todo: сделать компонент ошибки
 
 export const DashboardPage = () => {
   const [selectedTrackId, setSelectedTrackId] = useState<number | null>(null);
@@ -27,14 +27,12 @@ export const DashboardPage = () => {
     },
   });
 
-  if (isError) {
-    return <div>Ошибка: {error instanceof Error ? error.message : 'Что-то пошло не так'}</div>;
-  }
   const isEmpty = !isLoading && tracks.length === 0;
   const isReady = !isLoading && tracks.length > 0;
 
   return (
     <div className={blockStyle}>
+      {isError && <ErrorPage error={error instanceof Error ? error : null} />}
       {(isLoading || isEmpty) && <TracksStatus isLoading={isLoading} isEmpty={isEmpty} />}
       {isReady && (
         <Outlet
