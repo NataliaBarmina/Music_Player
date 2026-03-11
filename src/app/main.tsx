@@ -7,6 +7,7 @@ import { App } from './app';
 import { DashboardPage } from '../pages/dashboard/dashboardPage';
 import { TracksListRoute } from '../pages/tracksList';
 import { SelectedTrackDetailRoute } from '../pages/selectedTrackDetail';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const router = createHashRouter(
   [
@@ -41,8 +42,12 @@ const router = createHashRouter(
 const el = document.getElementById('root');
 if (!el) throw new Error('Root element #root not found');
 
+const queryClient = new QueryClient();
+
 createRoot(el).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>,
 );
