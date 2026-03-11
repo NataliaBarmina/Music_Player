@@ -1,11 +1,20 @@
 import { useOutletContext } from 'react-router-dom';
 import { TracksList } from './tracksList';
-import type { TTracks } from '@/shared/types';
+
+type TTracks = {
+  id: string;
+  attributes: {
+    attachments: {
+      url: string;
+    }[];
+    title: string;
+  };
+};
 
 export type TTracksList = {
   tracks: TTracks[];
-  selectedTrackId: number | null;
-  setSelectedTrackId: React.Dispatch<React.SetStateAction<number | null>>;
+  selectedTrackId: string | null;
+  setSelectedTrackId: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export const TracksListRoute = () => {

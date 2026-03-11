@@ -32,7 +32,7 @@ export const DashboardPage = () => {
   }
   const isEmpty = !isLoading && tracks.length === 0;
   const isReady = !isLoading && tracks.length > 0;
-
+  console.log(tracks[0]);
   return (
     <div className={blockStyle}>
       {(isLoading || isEmpty) && <TracksStatus isLoading={isLoading} isEmpty={isEmpty} />}
