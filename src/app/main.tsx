@@ -8,6 +8,7 @@ import { App } from './app';
 import { DashboardPage } from '@/pages/dashboard';
 import { TracksListRoute } from '@/pages/tracksList';
 import { SelectedTrackDetailRoute } from '@/pages/selectedTrackDetail';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const router = createHashRouter(
   [
@@ -42,11 +43,22 @@ const router = createHashRouter(
 const el = document.getElementById('root');
 if (!el) throw new Error('Root element #root not found');
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity, //обновление данных при уходе с вкладки
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      gcTime: 5 * 1000,
+    },
+  },
+});
 
 createRoot(el).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <RouterProvider router={router} />
     </QueryClientProvider>
   </React.StrictMode>,
