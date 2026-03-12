@@ -1,7 +1,4 @@
-export const blockStyle = 'h-full min-h-screen text-auto mx-auto bg-green-50 w-full';
-
-export const warningStyle = 'bg-pink-100 py-3 px-2 rounded-xl';
-
+export const blockStyle = 'h-full min-h-screen text-auto mx-auto bg-green-50 w-full relative';
 export const warningBlockStyle = 'text-center mt-16 text-3xl';
 
 //common

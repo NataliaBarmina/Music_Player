@@ -46,11 +46,13 @@ if (!el) throw new Error('Root element #root not found');
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: Infinity, //обновление данных при уходе с вкладки
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: false,
-      gcTime: 5 * 1000,
+      staleTime: 20 * 1000, //сколько времени данные считаются свежими
+      gcTime: 5 * 60 * 1000, // через сколько неиспользуемый кэш будет удалён
+      refetchOnMount: true, // делать ли повторный запрос при монтировании компонента
+      refetchOnWindowFocus: false, // делать ли повторный запрос при возврате на вкладку
+      refetchOnReconnect: false, // делать ли повторный запрос при восстановлении интернета
+      refetchInterval: 0, // автообновление
+      refetchIntervalInBackground: false, // обновлять даже если вкладка неактивна
     },
   },
 });

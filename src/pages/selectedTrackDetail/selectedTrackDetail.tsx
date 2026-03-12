@@ -23,12 +23,16 @@ export const SelectedTrackDetail = ({
     return () => setSelectedTrackId(null);
   }, [selectedTrackId]);
 
+  console.log('SelectedTrackDetail', selectedTrackId);
+
   const {
     data: selectedTrack,
     isLoading,
     isError,
     error,
+    isSuccess,
   } = useQuery({
+    staleTime: 0,
     queryKey: ['selectedTrack'],
     queryFn: async () => {
       if (selectedTrackId === null) return null;
@@ -44,22 +48,19 @@ export const SelectedTrackDetail = ({
     },
   });
 
-  const isEmpty = !isLoading && !selectedTrack?.lyrics;
-  const isReady = !isLoading;
-
   return (
     <div>
-      {isError && <ErrorPage error={error instanceof Error ? error : null} />}
       <h2 className={h2Styles}>{t('header.detail')}</h2>
+      {isError && <ErrorPage error={error instanceof Error ? error : null} />}
       {isLoading && <Preloader />}
-      {isReady && (
+      {isSuccess && (
         <div>
           <h2 className={selectedTrackTitleStyle}>{selectedTrack?.title}</h2>
           <h3 className={lyricHeaderStyle}>{t('header.lyrics')}</h3>
           <div className={lyricContentStyle}>{selectedTrack?.lyrics}</div>
         </div>
       )}
-      {isEmpty && (
+      {!selectedTrack?.lyrics && (
         <div className="text-center">
           <span className={warningStyle}>{t('warning.noText')}</span>
         </div>

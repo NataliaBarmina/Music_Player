@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { blockStyle } from './styles';
-import { TracksStatus } from './tracksStatus';
 import { Outlet } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { client } from '@/shared/api/client';
 import { ErrorPage } from '@/components/errorsPage';
+import { Preloader } from '@/components/preloader';
+import { RefreshingIndicator } from '@/components/refreshingIndicator';
 
 // todo: спрятать ключ
 // todo: кнопка резет селекшен - убрать?
@@ -13,12 +14,17 @@ import { ErrorPage } from '@/components/errorsPage';
 export const DashboardPage = () => {
   const [selectedTrackId, setSelectedTrackId] = useState<number | null>(null);
 
+  console.log('DashboardPage', selectedTrackId);
+
   const {
     data: tracks = [],
     isLoading,
     isError,
     error,
+    isSuccess,
+    isFetching,
   } = useQuery({
+    refetchInterval: 5 * 60 * 1000,
     queryKey: ['playlists'],
     queryFn: async () => {
       const response = await client.GET('/playlists/tracks');
@@ -26,14 +32,12 @@ export const DashboardPage = () => {
     },
   });
 
-  const isEmpty = !isLoading && tracks.length === 0;
-  const isReady = !isLoading && tracks.length > 0;
-
   return (
     <div className={blockStyle}>
       {isError && <ErrorPage error={error instanceof Error ? error : null} />}
-      {(isLoading || isEmpty) && <TracksStatus isLoading={isLoading} isEmpty={isEmpty} />}
-      {isReady && (
+      {isLoading && <Preloader />}
+      {isFetching && <RefreshingIndicator />}
+      {isSuccess && (
         <Outlet
           context={{
             tracks,

@@ -5,7 +5,6 @@ export const texts = {
     lyrics: 'Lyrics',
   },
   warning: {
-    noTracks: 'No tracks',
     noText: 'No text',
   },
   button: {
