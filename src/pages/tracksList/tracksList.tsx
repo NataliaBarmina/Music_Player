@@ -38,7 +38,11 @@ export const TracksList = ({ selectedTrackId, tracks, setSelectedTrackId }: TTra
             >
               <li>
                 <div className={trackTitleStyles}>{track.attributes.title.slice(0, 40)}</div>
-                <audio controls src={track.attributes.attachments[0].url} className={audioStyles} />
+                <audio
+                  controls
+                  src={track.attributes.attachments[0]?.url}
+                  className={audioStyles}
+                />
               </li>
             </div>
           ))}

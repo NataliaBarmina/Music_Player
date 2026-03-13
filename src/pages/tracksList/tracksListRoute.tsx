@@ -1,7 +1,7 @@
 import { useOutletContext } from 'react-router-dom';
 import { TracksList } from './tracksList';
 
-type TTracks = {
+export type TTracks = {
   id: string;
   attributes: {
     attachments: {
