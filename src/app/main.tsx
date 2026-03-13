@@ -43,9 +43,11 @@ const router = createHashRouter(
 const el = document.getElementById('root');
 if (!el) throw new Error('Root element #root not found');
 
+//создание экземпляра клиента React
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      // retry: 0,
       staleTime: 20 * 1000, //сколько времени данные считаются свежими
       gcTime: 5 * 60 * 1000, // через сколько неиспользуемый кэш будет удалён
       refetchOnMount: true, // делать ли повторный запрос при монтировании компонента
