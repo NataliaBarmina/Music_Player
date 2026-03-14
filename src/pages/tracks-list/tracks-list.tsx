@@ -12,7 +12,7 @@ import { useNavigate } from '@tanstack/react-router';
 type TTracks = {
   id: string;
   attributes: {
-    attachments: [{ url: string }];
+    attachments: { url: string }[];
     title: string;
   };
 };
