@@ -8,11 +8,26 @@ import {
   tracksStyles,
 } from './styles';
 import { useNavigate } from '@tanstack/react-router';
-import type { TTracksList } from './tracksListRoute';
+
+type TTracks = {
+  id: string;
+  attributes: {
+    attachments: [{ url: string }];
+    title: string;
+  };
+};
+
+type TTracksList = {
+  selectedTrackId: string | null;
+  tracks: TTracks[];
+  setSelectedTrackId: (trackId: string | null) => void;
+};
 
 export const TracksList = ({ selectedTrackId, tracks, setSelectedTrackId }: TTracksList) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
+  console.log(tracks[0]);
 
   return (
     <div>
