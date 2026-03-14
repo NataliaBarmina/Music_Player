@@ -1,20 +1,18 @@
 import { useState } from 'react';
 import { blockStyle } from './styles';
-import { Outlet } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { client } from '@/shared/api/client';
-import { ErrorPage } from '@/components/errorsPage';
-import { Preloader } from '@/components/preloader';
-import { RefreshingIndicator } from '@/components/refreshingIndicator';
+import { ErrorPage } from '@/shared/ui/error-page';
+import { Preloader } from '@/shared/ui/preloader';
+import { RefreshingIndicator } from '@/shared/ui/refreshing-indicator';
+import { TracksList } from '../tracks-list';
 
 // todo: спрятать ключ
 // todo: кнопка резет селекшен - убрать?
 // todo: одновременно проигрывать только одну песню
 
 export const DashboardPage = () => {
-  const [selectedTrackId, setSelectedTrackId] = useState<number | null>(null);
-
-  console.log('DashboardPage', selectedTrackId);
+  const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null);
 
   const {
     data: tracks = [],
@@ -37,13 +35,11 @@ export const DashboardPage = () => {
       {isError && <ErrorPage error={error instanceof Error ? error : null} />}
       {isLoading && <Preloader />}
       {isFetching && <RefreshingIndicator />}
-      {isSuccess && (
-        <Outlet
-          context={{
-            tracks,
-            selectedTrackId,
-            setSelectedTrackId,
-          }}
+      {isSuccess && !selectedTrackId && (
+        <TracksList
+          selectedTrackId={selectedTrackId}
+          tracks={tracks}
+          setSelectedTrackId={setSelectedTrackId}
         />
       )}
     </div>

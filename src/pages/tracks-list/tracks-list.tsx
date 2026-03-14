@@ -7,7 +7,7 @@ import {
   selectTrackStyle,
   tracksStyles,
 } from './styles';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '@tanstack/react-router';
 import type { TTracksList } from './tracksListRoute';
 
 export const TracksList = ({ selectedTrackId, tracks, setSelectedTrackId }: TTracksList) => {
@@ -33,7 +33,10 @@ export const TracksList = ({ selectedTrackId, tracks, setSelectedTrackId }: TTra
               className={`${track.id === selectedTrackId ? selectTrackStyle : tracksStyles}`}
               onClick={() => {
                 setSelectedTrackId(track.id);
-                navigate('/selectedTrackDetail');
+                navigate({
+                  to: '/tracks/$trackId',
+                  params: { trackId: String(track.id) },
+                });
               }}
             >
               <li>

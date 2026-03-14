@@ -6,24 +6,18 @@ import {
   lyricHeaderStyle,
   lyricContentStyle,
 } from './styles';
-import { Preloader } from '@/components/preloader';
-import { useEffect } from 'react';
-import type { TSelectedTrackDetail } from './selectedTrackDetailRoute';
+import { Preloader } from '@/shared/ui/preloader';
 import { useQuery } from '@tanstack/react-query';
 import { client } from '@/shared/api/client';
-import { ErrorPage } from '@/components/errorsPage';
+import { ErrorPage } from '@/shared/ui/error-page';
+import { getRouteApi } from '@tanstack/react-router';
 
-export const SelectedTrackDetail = ({
-  selectedTrackId,
-  setSelectedTrackId,
-}: TSelectedTrackDetail) => {
+const routeApi = getRouteApi('/tracks/$trackId');
+
+export const SelectedTrackDetail = () => {
+  const { trackId } = routeApi.useParams();
+  const selectedTrackId = String(trackId);
   const { t } = useTranslation();
-
-  useEffect(() => {
-    return () => setSelectedTrackId(null);
-  }, [selectedTrackId]);
-
-  console.log('SelectedTrackDetail', selectedTrackId);
 
   const {
     data: selectedTrack,
@@ -33,7 +27,7 @@ export const SelectedTrackDetail = ({
     isSuccess,
   } = useQuery({
     staleTime: 0,
-    queryKey: ['selectedTrack'],
+    queryKey: ['selectedTrack', selectedTrackId],
     queryFn: async () => {
       if (selectedTrackId === null) return null;
       const response = await client.GET('/playlists/tracks/{trackId}', {
