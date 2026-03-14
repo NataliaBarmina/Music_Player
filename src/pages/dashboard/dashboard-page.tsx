@@ -8,7 +8,6 @@ import { RefreshingIndicator } from '@/shared/ui/refreshing-indicator';
 import { TracksList } from '../tracks-list';
 
 // todo: спрятать ключ
-// todo: кнопка резет селекшен - убрать?
 // todo: одновременно проигрывать только одну песню
 
 export const DashboardPage = () => {
@@ -36,11 +35,7 @@ export const DashboardPage = () => {
       {isLoading && <Preloader />}
       {isFetching && <RefreshingIndicator />}
       {isSuccess && !selectedTrackId && (
-        <TracksList
-          selectedTrackId={selectedTrackId}
-          tracks={tracks}
-          setSelectedTrackId={setSelectedTrackId}
-        />
+        <TracksList tracks={tracks} setSelectedTrackId={setSelectedTrackId} />
       )}
     </div>
   );

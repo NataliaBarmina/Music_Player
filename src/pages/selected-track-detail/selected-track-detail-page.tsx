@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { h2Styles } from '@/pages/dashboard';
 import {
   warningStyle,
-  selectedTrackTitleStyle,
+  // selectedTrackTitleStyle,
   lyricHeaderStyle,
   lyricContentStyle,
 } from './styles';
@@ -43,13 +42,13 @@ export const SelectedTrackDetail = () => {
   });
 
   return (
-    <div>
-      <h2 className={h2Styles}>{t('header.detail')}</h2>
+    <div className="mx-auto h-[99vh]">
+      <h1>{t('header.detail')}</h1>
       {isError && <ErrorPage error={error instanceof Error ? error : null} />}
       {isLoading && <Preloader />}
       {isSuccess && (
         <div>
-          <h2 className={selectedTrackTitleStyle}>{selectedTrack?.title}</h2>
+          <h2>{selectedTrack?.title}</h2>
           <h3 className={lyricHeaderStyle}>{t('header.lyrics')}</h3>
           <div className={lyricContentStyle}>{selectedTrack?.lyrics}</div>
         </div>
