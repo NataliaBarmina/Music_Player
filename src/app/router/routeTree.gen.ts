@@ -8,71 +8,115 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from '../routes/__root';
-// import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from '../routes/index';
-import { Route as TracksTrackIdRouteImport } from '../routes/tracks.$trackId';
+import { Route as rootRouteImport } from './../routes/__root'
+import { Route as OauthCallbackPageRouteImport } from './../routes/oauth-callback-page'
+import { Route as MyPlaylistPageRouteImport } from './../routes/my-playlist-page'
+import { Route as IndexRouteImport } from './../routes/index'
+import { Route as TracksTrackIdRouteImport } from './../routes/tracks.$trackId'
 
+const OauthCallbackPageRoute = OauthCallbackPageRouteImport.update({
+  id: '/oauth-callback-page',
+  path: '/oauth-callback-page',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyPlaylistPageRoute = MyPlaylistPageRouteImport.update({
+  id: '/my-playlist-page',
+  path: '/my-playlist-page',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const TracksTrackIdRoute = TracksTrackIdRouteImport.update({
   id: '/tracks/$trackId',
   path: '/tracks/$trackId',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute;
-  '/tracks/$trackId': typeof TracksTrackIdRoute;
+  '/': typeof IndexRoute
+  '/my-playlist-page': typeof MyPlaylistPageRoute
+  '/oauth-callback-page': typeof OauthCallbackPageRoute
+  '/tracks/$trackId': typeof TracksTrackIdRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute;
-  '/tracks/$trackId': typeof TracksTrackIdRoute;
+  '/': typeof IndexRoute
+  '/my-playlist-page': typeof MyPlaylistPageRoute
+  '/oauth-callback-page': typeof OauthCallbackPageRoute
+  '/tracks/$trackId': typeof TracksTrackIdRoute
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport;
-  '/': typeof IndexRoute;
-  '/tracks/$trackId': typeof TracksTrackIdRoute;
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/my-playlist-page': typeof MyPlaylistPageRoute
+  '/oauth-callback-page': typeof OauthCallbackPageRoute
+  '/tracks/$trackId': typeof TracksTrackIdRoute
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/' | '/tracks/$trackId';
-  fileRoutesByTo: FileRoutesByTo;
-  to: '/' | '/tracks/$trackId';
-  id: '__root__' | '/' | '/tracks/$trackId';
-  fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    | '/'
+    | '/my-playlist-page'
+    | '/oauth-callback-page'
+    | '/tracks/$trackId'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/my-playlist-page' | '/oauth-callback-page' | '/tracks/$trackId'
+  id:
+    | '__root__'
+    | '/'
+    | '/my-playlist-page'
+    | '/oauth-callback-page'
+    | '/tracks/$trackId'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute;
-  TracksTrackIdRoute: typeof TracksTrackIdRoute;
+  IndexRoute: typeof IndexRoute
+  MyPlaylistPageRoute: typeof MyPlaylistPageRoute
+  OauthCallbackPageRoute: typeof OauthCallbackPageRoute
+  TracksTrackIdRoute: typeof TracksTrackIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/oauth-callback-page': {
+      id: '/oauth-callback-page'
+      path: '/oauth-callback-page'
+      fullPath: '/oauth-callback-page'
+      preLoaderRoute: typeof OauthCallbackPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-playlist-page': {
+      id: '/my-playlist-page'
+      path: '/my-playlist-page'
+      fullPath: '/my-playlist-page'
+      preLoaderRoute: typeof MyPlaylistPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
-      id: '/';
-      path: '/';
-      fullPath: '/';
-      preLoaderRoute: typeof IndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tracks/$trackId': {
-      id: '/tracks/$trackId';
-      path: '/tracks/$trackId';
-      fullPath: '/tracks/$trackId';
-      preLoaderRoute: typeof TracksTrackIdRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/tracks/$trackId'
+      path: '/tracks/$trackId'
+      fullPath: '/tracks/$trackId'
+      preLoaderRoute: typeof TracksTrackIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MyPlaylistPageRoute: MyPlaylistPageRoute,
+  OauthCallbackPageRoute: OauthCallbackPageRoute,
   TracksTrackIdRoute: TracksTrackIdRoute,
-};
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
