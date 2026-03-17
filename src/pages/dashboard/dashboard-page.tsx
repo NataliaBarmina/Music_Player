@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { blockStyle } from './styles';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { client } from '@/shared/api/client';
 import { ErrorPage } from '@/shared/ui/error-page';
 import { Preloader } from '@/shared/ui/preloader';
@@ -12,9 +12,10 @@ import { TracksList } from '../tracks-list';
 
 export const DashboardPage = () => {
   const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
 
   const {
-    data: tracks = [],
+    data: { tracks = [], pagesCount = 0 } = {},
     isLoading,
     isError,
     error,
@@ -22,11 +23,21 @@ export const DashboardPage = () => {
     isFetching,
   } = useQuery({
     refetchInterval: 5 * 60 * 1000,
-    queryKey: ['playlists'],
+    queryKey: ['playlists', page],
     queryFn: async () => {
-      const response = await client.GET('/playlists/tracks');
-      return response.data?.data ?? [];
+      const response = await client.GET('/playlists/tracks', {
+        params: {
+          query: {
+            pageNumber: page,
+          },
+        },
+      });
+      return {
+        tracks: response.data?.data ?? [],
+        pagesCount: response.data?.meta.pagesCount ?? 0,
+      };
     },
+    placeholderData: keepPreviousData, // пока грузятся новые данные, показываются старые данные
   });
 
   return (
@@ -35,7 +46,13 @@ export const DashboardPage = () => {
       {isLoading && <Preloader />}
       {isFetching && <RefreshingIndicator />}
       {isSuccess && !selectedTrackId && (
-        <TracksList tracks={tracks} setSelectedTrackId={setSelectedTrackId} />
+        <TracksList
+          tracks={tracks}
+          setSelectedTrackId={setSelectedTrackId}
+          current={page}
+          pagesCount={pagesCount}
+          changePageNumber={setPage}
+        />
       )}
     </div>
   );

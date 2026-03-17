@@ -9,4 +9,7 @@ export type TTracks = {
 export type TTracksList = {
   tracks: TTracks[];
   setSelectedTrackId: (trackId: string | null) => void;
+  current: number;
+  pagesCount: number;
+  changePageNumber: (page: number) => void;
 };
