@@ -27,12 +27,13 @@ export const SelectedTrackDetail = () => {
   } = useQuery({
     staleTime: 0,
     queryKey: ['selectedTrack', selectedTrackId],
-    queryFn: async () => {
+    queryFn: async ({ signal }) => {
       if (selectedTrackId === null) return null;
       const response = await client.GET('/playlists/tracks/{trackId}', {
         params: {
           path: { trackId: selectedTrackId },
         },
+        signal,
       });
       return {
         lyrics: response.data?.data.attributes.lyrics,

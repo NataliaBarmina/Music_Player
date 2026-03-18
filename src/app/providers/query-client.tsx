@@ -4,7 +4,7 @@ import { QueryClient } from '@tanstack/react-query';
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      // retry: 0,
+      // retry: 0, // количество повторных попыток запроса, если он завершился ошибкой
       staleTime: 20 * 1000, //сколько времени данные считаются свежими
       gcTime: 5 * 60 * 1000, // через сколько неиспользуемый кэш будет удалён
       refetchOnMount: false, // делать ли повторный запрос при монтировании компонента

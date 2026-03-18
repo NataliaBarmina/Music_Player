@@ -25,7 +25,9 @@ export const TracksList = ({
   return (
     <div>
       <h1>{t('header.tracksList')}</h1>
+
       <Pagination current={current} pagesCount={pagesCount} changePageNumber={changePageNumber} />
+
       <ul className="text-center">
         {tracks.map((track) => (
           <Track
