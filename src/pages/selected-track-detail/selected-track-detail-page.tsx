@@ -43,7 +43,7 @@ export const SelectedTrackDetail = () => {
   });
 
   return (
-    <div className="mx-auto h-[99vh]">
+    <div className="mx-auto h-[99vh] w-full">
       <h1>{t('header.detail')}</h1>
       {isError && <ErrorPage error={error instanceof Error ? error : null} />}
       {isLoading && <Preloader />}

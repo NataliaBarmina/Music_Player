@@ -23,7 +23,7 @@ export const TracksList = ({
   };
 
   return (
-    <div>
+    <div className="w-full">
       <h1>{t('header.tracksList')}</h1>
 
       <Pagination current={current} pagesCount={pagesCount} changePageNumber={changePageNumber} />
