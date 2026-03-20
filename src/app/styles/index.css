@@ -17,14 +17,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 600;
-  color: #9d174d;
-}
-a:hover {
-  color: #500724;
-}
-
 body {
   margin: 0;
   display: flex;
