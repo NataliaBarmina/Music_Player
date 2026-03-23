@@ -14,9 +14,6 @@ export const NavPanel = () => {
         <Link className={linkStyle} to="/my-playlist-page">
           МОИ ПЛЕЙЛИСТЫ
         </Link>
-        <Link className={linkStyle} to="/oauth-callback-page">
-          АВТОРИЗАЦИЯ
-        </Link>
       </div>
     </>
   );
