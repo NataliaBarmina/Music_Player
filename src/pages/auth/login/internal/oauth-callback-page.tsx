@@ -14,5 +14,5 @@ export const OAuthCallbackPage = () => {
 
     window.close();
   }, []);
-  return <div>Авторизация</div>;
+  return <></>;
 };

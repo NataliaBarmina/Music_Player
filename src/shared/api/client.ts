@@ -1,12 +1,13 @@
 import createClient, { type Middleware } from 'openapi-fetch';
 import type { paths } from './schema';
+import { API_KEY, BASE_URL } from './apiConfig';
 
 // НАСТРОЙКА КЛИЕНТА ДЛЯ ВСЕХ ЗАПРОСОВ ПРИЛОЖЕНИЯ (чтобы писать просто client.GET('/auth/me'))
 
 const authMiddleware: Middleware = {
   // срабатывает перед отправкой запроса:
   async onRequest({ request }) {
-    const accessToken = localStorage.getItem('musicfun-access-token');
+    const accessToken = localStorage.getItem('access-token');
 
     if (accessToken) {
       request.headers.set('Authorization', 'Bearer ' + accessToken); // запрос уходит с заголовком Authorization: Bearer <token>
@@ -23,8 +24,8 @@ const authMiddleware: Middleware = {
 };
 
 export const client = createClient<paths>({
-  baseUrl: 'https://musicfun.it-incubator.app/api/1.0',
-  headers: { 'api-key': 'ace00df7-2548-46cd-b290-b90853d266e5' },
+  baseUrl: BASE_URL,
+  headers: { 'api-key': API_KEY },
 });
 
 client.use(authMiddleware);

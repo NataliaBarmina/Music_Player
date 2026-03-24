@@ -1,16 +1,17 @@
 import { useLogicMutation } from './use-logic-mutation';
 
-export const LogoutButton = ({ login }: { login: string | undefined }) => {
+export const LogoutButton = ({ login }: { login: string }) => {
   const mutation = useLogicMutation();
-
-  const handleLogoutClick = () => {
-    mutation.mutate();
-  };
 
   return (
     <div className=" w-full text-right ">
-      <div className="text-black ">{login}</div>
-      <button className="inline-block mr-4" onClick={handleLogoutClick}>
+      <div>{login ?? ''}</div>
+      <button
+        className="inline-block mr-4"
+        onClick={() => {
+          mutation.mutate();
+        }}
+      >
         Logout
       </button>
     </div>

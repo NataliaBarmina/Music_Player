@@ -1,4 +1,4 @@
-import { callbackUrl } from './callback-URL';
+import { CALLBACK_URL } from '@shared/api/apiConfig';
 import { useLogicMutation } from './use-logic-mutation';
 
 //КАСТОМНЫЙ ХУК -ОРКЕСТРАТОР OAuth-ПРОЦЕССА НА КЛИЕНТЕ
@@ -13,7 +13,7 @@ export const useOAuthLogin = () => {
   const handleLogicClick = () => {
     window.addEventListener('message', handleOAuthMessage); // ждет сообщение из popup-окна
     window.open(
-      `https://musicfun.it-incubator.app/api/1.0/auth/oauth-redirect?callbackUrl=${callbackUrl}`, // URL для OAuth-авторизации.
+      `https://musicfun.it-incubator.app/api/1.0/auth/oauth-redirect?callbackUrl=${CALLBACK_URL}`, // URL для OAuth-авторизации.
       'apihub-oauth2', // Имя popup-окна
       'width=500, height=600', // Popup размером 500x600px
     );

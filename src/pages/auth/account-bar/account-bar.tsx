@@ -1,12 +1,12 @@
-import { LoginButton } from '../login/login-button.tsx';
+import { LoginButton } from '../login';
 import { useQuery } from '@tanstack/react-query';
 import { client } from '@shared/api/client.ts';
-import { LogoutButton } from '../logout/logout-button.tsx';
+import { LogoutButton } from '../logout';
 
 //  ПРОВЕРЯЕМ АВТОРИЗАЦИЮ ПОЛЬЗОВАТЕЛЯ
 
 export const AccountBar = () => {
-  const query = useQuery({
+  const { data } = useQuery({
     queryKey: ['auth', 'me'],
     queryFn: async () => {
       const response = await client.GET('/auth/me'); // возвращает объект с айди и логином пользователя
@@ -14,5 +14,5 @@ export const AccountBar = () => {
     },
     retry: false, // не перезапрашивать данные, если придет ошибка
   });
-  return <div>{!query.data ? <LoginButton /> : <LogoutButton login={query.data!.login} />}</div>;
+  return <div>{!data ? <LoginButton /> : <LogoutButton login={data.login} />}</div>;
 };

@@ -1,4 +1,4 @@
-import { useOAuthLogin } from './use-OAuth-login';
+import { useOAuthLogin } from './internal';
 
 export const LoginButton = () => {
   const { handleLogicClick } = useOAuthLogin();
