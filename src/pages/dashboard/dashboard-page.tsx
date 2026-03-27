@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { blockStyle } from './styles';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
-import { client } from '@/shared/api/client';
+import { client } from '@/shared/api/client/client';
 import { ErrorPage } from '@/shared/ui/error-page';
 import { Preloader } from '@/shared/ui/preloader';
 import { RefreshingIndicator } from '@/shared/ui/refreshing-indicator';

@@ -1,14 +1,15 @@
-import { client } from '@/shared/api/client';
+import { client } from '@/shared/api/client/client';
 import { useMutation } from '@tanstack/react-query';
 import { useQueryClient } from '@tanstack/react-query';
 import { CALLBACK_URL } from '@shared/api/apiConfig';
 import type { TCode, TData } from './types';
+import { tokenStorage } from '@/shared/api/token-storage';
 
 // КАСТОМНЫЙ ХУК ДЛЯ ЛОГИНИЗАЦИИ ПОЛЬЗОВАТЕЛЯ ПОСЛЕ OAuth
 
 // 1) отправляем code на backend
 // 2) получаем от сервера accessToken и refreshToken
-// 3) сохраняем их в localStorage
+// 3) сохраняем их в хранилище
 // 4) обновляем данные авторизации в React Query, чтобы приложение узнало, что пользователь теперь залогинен
 
 export const useLogicMutation = () => {
@@ -30,8 +31,7 @@ export const useLogicMutation = () => {
       return data;
     },
     onSuccess: (data: TData) => {
-      localStorage.setItem('refresh-token', data.refreshToken);
-      localStorage.setItem('access-token', data.accessToken);
+      tokenStorage.setTokens(data.accessToken, data.refreshToken);
 
       queryClient.invalidateQueries({
         queryKey: ['auth', 'me'], // Сбрасываем кэш запроса ['auth', 'me'], чтобы запросить данные пользователя после логина.

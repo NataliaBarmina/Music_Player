@@ -7,7 +7,7 @@ import {
 } from './styles';
 import { Preloader } from '@/shared/ui/preloader';
 import { useQuery } from '@tanstack/react-query';
-import { client } from '@/shared/api/client';
+import { client } from '@/shared/api/client/client';
 import { ErrorPage } from '@/shared/ui/error-page';
 import { getRouteApi } from '@tanstack/react-router';
 
