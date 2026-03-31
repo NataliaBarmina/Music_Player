@@ -14,6 +14,9 @@ export const NavPanel = () => {
         <Link className={linkStyle} to="/my-playlist-page">
           МОИ ПЛЕЙЛИСТЫ
         </Link>
+        <Link className={linkStyle} to="/add-play-list-page">
+          ДОБАВИТЬ ПЛЕЙЛИСТ
+        </Link>
       </div>
     </>
   );

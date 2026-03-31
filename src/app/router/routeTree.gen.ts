@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './../routes/__root'
 import { Route as OauthCallbackPageRouteImport } from './../routes/oauth-callback-page'
 import { Route as MyPlaylistPageRouteImport } from './../routes/my-playlist-page'
+import { Route as AddPlayListPageRouteImport } from './../routes/add-play-list-page'
 import { Route as IndexRouteImport } from './../routes/index'
 import { Route as TracksTrackIdRouteImport } from './../routes/tracks.$trackId'
 
@@ -22,6 +23,11 @@ const OauthCallbackPageRoute = OauthCallbackPageRouteImport.update({
 const MyPlaylistPageRoute = MyPlaylistPageRouteImport.update({
   id: '/my-playlist-page',
   path: '/my-playlist-page',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AddPlayListPageRoute = AddPlayListPageRouteImport.update({
+  id: '/add-play-list-page',
+  path: '/add-play-list-page',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -37,12 +43,14 @@ const TracksTrackIdRoute = TracksTrackIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/add-play-list-page': typeof AddPlayListPageRoute
   '/my-playlist-page': typeof MyPlaylistPageRoute
   '/oauth-callback-page': typeof OauthCallbackPageRoute
   '/tracks/$trackId': typeof TracksTrackIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/add-play-list-page': typeof AddPlayListPageRoute
   '/my-playlist-page': typeof MyPlaylistPageRoute
   '/oauth-callback-page': typeof OauthCallbackPageRoute
   '/tracks/$trackId': typeof TracksTrackIdRoute
@@ -50,6 +58,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/add-play-list-page': typeof AddPlayListPageRoute
   '/my-playlist-page': typeof MyPlaylistPageRoute
   '/oauth-callback-page': typeof OauthCallbackPageRoute
   '/tracks/$trackId': typeof TracksTrackIdRoute
@@ -58,14 +67,21 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/add-play-list-page'
     | '/my-playlist-page'
     | '/oauth-callback-page'
     | '/tracks/$trackId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/my-playlist-page' | '/oauth-callback-page' | '/tracks/$trackId'
+  to:
+    | '/'
+    | '/add-play-list-page'
+    | '/my-playlist-page'
+    | '/oauth-callback-page'
+    | '/tracks/$trackId'
   id:
     | '__root__'
     | '/'
+    | '/add-play-list-page'
     | '/my-playlist-page'
     | '/oauth-callback-page'
     | '/tracks/$trackId'
@@ -73,6 +89,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AddPlayListPageRoute: typeof AddPlayListPageRoute
   MyPlaylistPageRoute: typeof MyPlaylistPageRoute
   OauthCallbackPageRoute: typeof OauthCallbackPageRoute
   TracksTrackIdRoute: typeof TracksTrackIdRoute
@@ -94,6 +111,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MyPlaylistPageRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/add-play-list-page': {
+      id: '/add-play-list-page'
+      path: '/add-play-list-page'
+      fullPath: '/add-play-list-page'
+      preLoaderRoute: typeof AddPlayListPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -113,6 +137,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AddPlayListPageRoute: AddPlayListPageRoute,
   MyPlaylistPageRoute: MyPlaylistPageRoute,
   OauthCallbackPageRoute: OauthCallbackPageRoute,
   TracksTrackIdRoute: TracksTrackIdRoute,
