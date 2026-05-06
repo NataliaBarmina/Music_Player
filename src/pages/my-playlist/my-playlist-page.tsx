@@ -1,19 +1,21 @@
 import { useMeQuery } from '../auth/api/use-me-query';
 import { Preloader } from '@/shared/ui/preloader';
 import { Navigate } from '@tanstack/react-router';
-import { TracksList } from '../tracks-list';
+import { MyTracksList } from './my-tracks-list';
 
 export const MyPlayListPage = () => {
   const { data, isPending } = useMeQuery();
+
+  if (!data) {
+    <Navigate to="/" replace />;
+  }
 
   return (
     <div className="w-full">
       <h1>Мои плейлисты</h1>
 
       {isPending && <Preloader />}
-
-      {!data && <Navigate to="/" replace />}
-      <TracksList userId={data?.userId} />
+      <MyTracksList userId={data?.userId!} />
     </div>
   );
 };

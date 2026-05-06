@@ -28,6 +28,7 @@ export const useLogicMutation = () => {
       if (error) {
         throw new Error(error instanceof Error ? error.message : 'Login failed');
       }
+      console.log('accessToken:', data.accessToken);
       return data;
     },
     onSuccess: (data: TData) => {

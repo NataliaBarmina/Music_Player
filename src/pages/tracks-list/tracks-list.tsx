@@ -9,12 +9,10 @@ import { Pagination } from '@/shared/ui/pagination';
 import { useTranslation } from 'react-i18next';
 import { Track } from '@/pages/tracks-list/track';
 import { usePlayListTracks } from './use-playlist-tracks';
-import type { TTrackList } from './types';
 
-// todo: спрятать ключ
-// todo: одновременно проигрывать только одну песню
+// todo: переделать верстку треков
 
-export const TracksList = ({ userId }: TTrackList) => {
+export const TracksList = () => {
   const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
@@ -30,7 +28,7 @@ export const TracksList = ({ userId }: TTrackList) => {
     error,
     isSuccess,
     isFetching,
-  } = usePlayListTracks({ page, search, userId });
+  } = usePlayListTracks({ page, search });
 
   const { t } = useTranslation();
 

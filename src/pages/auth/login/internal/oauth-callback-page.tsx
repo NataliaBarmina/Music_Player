@@ -8,9 +8,24 @@ export const OAuthCallbackPage = () => {
     const url = new URL(window.location.href); // текущий URL страницы
     const code = url.searchParams.get('code'); // извлекаем авторизационный код из URL параметров
 
-    if (code && window.opener) {
-      window.opener.postMessage({ code }, window.location.origin);
-    } // отправляем код в родительское окно  через postMessage
+    const error = url.searchParams.get('error');
+
+    if (error) {
+      console.warn('OAuth returned error:', error);
+      return;
+    }
+
+    if (!code) {
+      console.warn('No code in callback URL');
+      return;
+    }
+
+    if (!window.opener) {
+      console.warn('No window.opener');
+      return;
+    }
+
+    window.opener.postMessage({ code }, window.location.origin);
 
     window.close();
   }, []);

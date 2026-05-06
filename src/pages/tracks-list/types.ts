@@ -8,7 +8,7 @@ export type TTrack = {
 export type TTrackList = { userId?: string };
 
 export type TUsePlayListTracks = {
-  page: number;
+  page?: number;
   search?: string;
   userId?: string;
 };

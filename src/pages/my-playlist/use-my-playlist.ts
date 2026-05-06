@@ -1,18 +1,22 @@
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { client } from '@/shared/api/client/client';
-import type { TUsePlayListTracks } from './types';
 
-export const usePlayListTracks = ({ page, search }: TUsePlayListTracks) => {
+export type TUsePlayListTracks = {
+  search?: string;
+  userId?: string;
+};
+
+export const useMyPlayList = ({ search, userId }: TUsePlayListTracks) => {
   const query = useQuery({
     refetchInterval: 5 * 60 * 1000,
-    queryKey: ['playlists', { page, search }], //при большом количестве параметров объединять их в объекты - поможет избежать путаницы
+    queryKey: ['playlists', { search, userId }], //при большом количестве параметров объединять их в объекты
 
     queryFn: async ({ signal }) => {
-      const response = await client.GET('/playlists/tracks', {
+      const response = await client.GET('/playlists', {
         params: {
           query: {
-            pageNumber: page,
             search,
+            userId,
           },
         },
         signal,
@@ -23,7 +27,6 @@ export const usePlayListTracks = ({ page, search }: TUsePlayListTracks) => {
 
       return {
         tracks: response.data?.data ?? [],
-        pagesCount: response.data?.meta.pagesCount ?? 0,
       };
     },
 
@@ -33,6 +36,5 @@ export const usePlayListTracks = ({ page, search }: TUsePlayListTracks) => {
   return {
     ...query,
     tracks: query.data?.tracks ?? [],
-    pageCount: query.data?.pagesCount ?? 0,
   };
 };

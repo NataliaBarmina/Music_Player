@@ -29,7 +29,7 @@ export const authMiddleware: Middleware = {
 
   async onResponse({ request, response }) {
     if (response.ok) return response;
-    if (!response.ok && response.status !== 401) {
+    if (response.status !== 401 && response.status !== 403) {
       throw new Error(`${response.url}: ${response.status} ${response.statusText}`);
     }
 
@@ -41,8 +41,14 @@ export const authMiddleware: Middleware = {
       const retryRequest = new Request(originalRequest, {
         headers: new Headers(originalRequest.headers),
       });
+      const newAccessToken = tokenStorage.accessToken;
 
-      retryRequest.headers.set('Authorization', 'Bearer ' + tokenStorage.accessToken);
+      if (!newAccessToken) {
+        return response;
+      }
+
+      retryRequest.headers.set('Authorization', 'Bearer ' + newAccessToken);
+      retryRequest.headers.set('x-retry', '1');
 
       return fetch(retryRequest);
     } catch {

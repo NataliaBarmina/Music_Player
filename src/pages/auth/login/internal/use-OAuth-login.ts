@@ -11,9 +11,10 @@ export const useOAuthLogin = () => {
   const mutation = useLogicMutation();
 
   const handleLogicClick = () => {
+    window.removeEventListener('message', handleOAuthMessage);
     window.addEventListener('message', handleOAuthMessage); // ждет сообщение из popup-окна
     window.open(
-      `https://musicfun.it-incubator.app/api/1.0/auth/oauth-redirect?callbackUrl=${CALLBACK_URL}`, // URL для OAuth-авторизации.
+      `https://musicfun.it-incubator.app/api/1.0/auth/oauth-redirect?callbackUrl=${encodeURIComponent(CALLBACK_URL)}`, // URL для OAuth-авторизации.
       'apihub-oauth2', // Имя popup-окна
       'width=500, height=600', // Popup размером 500x600px
     );
@@ -32,6 +33,7 @@ export const useOAuthLogin = () => {
       console.warn('no code in message');
       return;
     }
+
     mutation.mutate({ code }); //Если код есть, запускаем mutation
   }
 

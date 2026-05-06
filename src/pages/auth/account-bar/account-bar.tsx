@@ -7,6 +7,7 @@ import { Preloader } from '@/shared/ui/preloader';
 
 export const AccountBar = () => {
   const { data, isLoading } = useMeQuery();
+
   return (
     <div>
       {isLoading && <Preloader />}
