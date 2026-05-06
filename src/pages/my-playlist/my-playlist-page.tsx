@@ -6,16 +6,15 @@ import { MyTracksList } from './my-tracks-list';
 export const MyPlayListPage = () => {
   const { data, isPending } = useMeQuery();
 
-  if (!data) {
-    <Navigate to="/" replace />;
+  if (!data?.userId) {
+    return <Navigate to="/add-play-list-page" />;
   }
-
   return (
     <div className="w-full">
       <h1>Мои плейлисты</h1>
 
       {isPending && <Preloader />}
-      <MyTracksList userId={data?.userId!} />
+      <MyTracksList userId={data?.userId} />
     </div>
   );
 };

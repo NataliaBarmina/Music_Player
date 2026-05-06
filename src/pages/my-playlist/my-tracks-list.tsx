@@ -5,7 +5,7 @@ import { RefreshingIndicator } from '@/shared/ui/refreshing-indicator';
 import { SearchField } from '@/shared/ui/searchField';
 import { useMyPlayList } from './use-my-playlist';
 
-export const MyTracksList = ({ userId }: { userId: string }) => {
+export const MyTracksList = ({ userId }: { userId: string | undefined }) => {
   // const [selectedPlayListId, setSelectedPlayListId] = useState<string | null>(null);
   const [search, setSearch] = useState('');
 

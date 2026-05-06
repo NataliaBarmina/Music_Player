@@ -1,4 +1,4 @@
-import { AddPlayListPage } from '@/pages/add-play-list/add-play-list-page';
+import { AddPlayListPage } from '@/pages/add-play-list';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/add-play-list-page')({
