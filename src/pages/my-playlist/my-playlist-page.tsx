@@ -1,20 +1,22 @@
 import { useMeQuery } from '../auth/api/use-me-query';
 import { Preloader } from '@/shared/ui/preloader';
-import { Navigate } from '@tanstack/react-router';
-import { MyTracksList } from './my-tracks-list';
+import { MyPlayList } from './my-playlist';
+import { Warning } from '@/shared/ui/warning';
+import { useTranslation } from 'react-i18next';
 
 export const MyPlayListPage = () => {
   const { data, isPending } = useMeQuery();
+  const { t } = useTranslation();
 
-  if (!data?.userId) {
-    return <Navigate to="/add-play-list-page" />;
-  }
   return (
     <div className="w-full">
-      <h1>Мои плейлисты</h1>
+      <h1>{t('playlists.title')}</h1>
 
       {isPending && <Preloader />}
-      <MyTracksList userId={data?.userId} />
+
+      {!data?.userId && <Warning text={t('playlists.authRequiredToGetPlayList')} />}
+
+      {data?.userId && <MyPlayList userId={data?.userId} />}
     </div>
   );
 };

@@ -4,9 +4,15 @@ import { Preloader } from '@/shared/ui/preloader';
 import { RefreshingIndicator } from '@/shared/ui/refreshing-indicator';
 import { SearchField } from '@/shared/ui/searchField';
 import { useMyPlayList } from './use-my-playlist';
+import { Warning } from '@/shared/ui/warning';
+import { useTranslation } from 'react-i18next';
+import { PlayList } from './playlist';
 
-export const MyTracksList = ({ userId }: { userId: string | undefined }) => {
+export const MyPlayList = ({ userId }: { userId: string }) => {
+  const { t } = useTranslation();
+
   // const [selectedPlayListId, setSelectedPlayListId] = useState<string | null>(null);
+
   const [search, setSearch] = useState('');
 
   const { data, isLoading, isError, error, isSuccess, isFetching } = useMyPlayList({
@@ -17,22 +23,19 @@ export const MyTracksList = ({ userId }: { userId: string | undefined }) => {
   return (
     <div className="w-[90%] mx-auto">
       {isError && <ErrorPage error={error instanceof Error ? error : null} />}
-
       {isLoading && <Preloader />}
       {isFetching && <RefreshingIndicator />}
 
       <SearchField search={search} setSearch={setSearch} />
+
+      {isSuccess && !data.tracks.length && <Warning text={t('playlists.emptyTracks')} />}
 
       {/* && !selectedPlayListId */}
       {isSuccess && (
         <ul>
           {data.tracks.map((track, i) => (
             <li key={track.id}>
-              <div className=" mt-8 text-black">
-                <span>{i + 1}) </span>
-                <span>{track.attributes.title}</span>
-                <button className="bg-inherit border-none inline-block">🗑️</button>
-              </div>
+              <PlayList title={track.attributes.title} position={i + 1} />
             </li>
           ))}
         </ul>

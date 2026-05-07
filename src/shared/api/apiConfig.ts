@@ -1,4 +1,4 @@
-export const API_KEY = '530f7526-ba7b-4beb-b2be-ae194d29a74f';
+export const API_KEY = '04fef673-887e-411c-9c9b-60429dd0f3de';
 
 export const BASE_URL = 'https://musicfun.it-incubator.app/api/1.0';
 export const CALLBACK_URL = 'http://localhost:5173/Music_Player/oauth-callback-page';

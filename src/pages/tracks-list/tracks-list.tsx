@@ -13,6 +13,8 @@ import { usePlayListTracks } from './use-playlist-tracks';
 // todo: переделать верстку треков
 
 export const TracksList = () => {
+  const { t } = useTranslation();
+
   const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
@@ -30,8 +32,6 @@ export const TracksList = () => {
     isFetching,
   } = usePlayListTracks({ page, search });
 
-  const { t } = useTranslation();
-
   return (
     <div className={blockStyle}>
       {isError && <ErrorPage error={error instanceof Error ? error : null} />}
@@ -43,7 +43,7 @@ export const TracksList = () => {
 
       {isSuccess && !selectedTrackId && (
         <div className="w-full">
-          <h1>{t('header.tracksList')}</h1>
+          <h1>{t('tracks.title')}</h1>
 
           <Pagination current={page} pagesCount={pagesCount} changePageNumber={setPage} />
 

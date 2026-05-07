@@ -44,19 +44,22 @@ export const SelectedTrackDetail = () => {
 
   return (
     <div className="mx-auto h-[99vh] w-full">
-      <h1>{t('header.detail')}</h1>
+      <h1>{t('trackDetails.title')}</h1>
+
       {isError && <ErrorPage error={error instanceof Error ? error : null} />}
       {isLoading && <Preloader />}
+
       {isSuccess && (
         <div>
           <h2>{selectedTrack?.title}</h2>
-          <h3 className={lyricHeaderStyle}>{t('header.lyrics')}</h3>
+          <h3 className={lyricHeaderStyle}>{t('trackDetails.lyricsTitle')}</h3>
           <div className={lyricContentStyle}>{selectedTrack?.lyrics}</div>
         </div>
       )}
+
       {!selectedTrack?.lyrics && (
         <div className="text-center">
-          <span className={warningStyle}>{t('warning.noText')}</span>
+          <span className={warningStyle}>{t('trackDetails.empty')}</span>
         </div>
       )}
     </div>
