@@ -5,7 +5,7 @@ import type { TUsePlayListTracks } from './types';
 export const usePlayListTracks = ({ page, search }: TUsePlayListTracks) => {
   const query = useQuery({
     refetchInterval: 5 * 60 * 1000,
-    queryKey: ['playlists', { page, search }], //при большом количестве параметров объединять их в объекты - поможет избежать путаницы
+    queryKey: ['generalTracks', { page, search }], //при большом количестве параметров объединять их в объекты - поможет избежать путаницы
 
     queryFn: async ({ signal }) => {
       const response = await client.GET('/playlists/tracks', {

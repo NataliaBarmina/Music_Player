@@ -3,10 +3,10 @@ import { ErrorPage } from '@/shared/ui/error-page';
 import { Preloader } from '@/shared/ui/preloader';
 import { RefreshingIndicator } from '@/shared/ui/refreshing-indicator';
 import { SearchField } from '@/shared/ui/searchField';
-import { usePlayList } from './use-playlist';
+import { usePlayList } from '@/pages/playlist/use-playlist';
 import { Warning } from '@/shared/ui/warning';
 import { useTranslation } from 'react-i18next';
-import { MusicGenreItem } from '../selected-music-genre.tsx/music-genre-item';
+import { MusicGenreItem } from '@/entities/music-genre/music-genre';
 
 export const MusicGenresList = ({ userId }: { userId: string }) => {
   const { t } = useTranslation();

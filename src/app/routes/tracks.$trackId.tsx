@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { SelectedTrackDetail } from '@/pages/selected-track-detail';
+import { TrackDetailPage } from '@/pages/selected-track-detail';
 
 export const Route = createFileRoute('/tracks/$trackId')({
-  component: SelectedTrackDetail,
+  component: TrackDetailPage,
 });

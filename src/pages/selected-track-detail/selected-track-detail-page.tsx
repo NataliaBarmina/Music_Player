@@ -1,22 +1,18 @@
 import { useTranslation } from 'react-i18next';
-import {
-  warningStyle,
-  // selectedTrackTitleStyle,
-  lyricHeaderStyle,
-  lyricContentStyle,
-} from './styles';
 import { Preloader } from '@/shared/ui/preloader';
-import { useQuery } from '@tanstack/react-query';
-import { client } from '@/shared/api/client/client';
+import { useSelectedTrack } from './use-selected-track';
 import { ErrorPage } from '@/shared/ui/error-page';
 import { getRouteApi } from '@tanstack/react-router';
+import { Warning } from '@/shared/ui/warning';
+import { TrackLyrics } from '@/entities/trackLyrics/track-lyric';
 
 const routeApi = getRouteApi('/tracks/$trackId');
 
-export const SelectedTrackDetail = () => {
+export const TrackDetailPage = () => {
+  const { t } = useTranslation();
+
   const { trackId } = routeApi.useParams();
   const selectedTrackId = String(trackId);
-  const { t } = useTranslation();
 
   const {
     data: selectedTrack,
@@ -24,23 +20,7 @@ export const SelectedTrackDetail = () => {
     isError,
     error,
     isSuccess,
-  } = useQuery({
-    staleTime: 0,
-    queryKey: ['selectedTrack', selectedTrackId],
-    queryFn: async ({ signal }) => {
-      if (selectedTrackId === null) return null;
-      const response = await client.GET('/playlists/tracks/{trackId}', {
-        params: {
-          path: { trackId: selectedTrackId },
-        },
-        signal,
-      });
-      return {
-        lyrics: response.data?.data.attributes.lyrics,
-        title: response.data?.data.attributes.title.slice(0, 40),
-      };
-    },
-  });
+  } = useSelectedTrack(selectedTrackId);
 
   return (
     <div className="mx-auto h-[99vh] w-full">
@@ -50,18 +30,14 @@ export const SelectedTrackDetail = () => {
       {isLoading && <Preloader />}
 
       {isSuccess && (
-        <div>
-          <h2>{selectedTrack?.title}</h2>
-          <h3 className={lyricHeaderStyle}>{t('trackDetails.lyricsTitle')}</h3>
-          <div className={lyricContentStyle}>{selectedTrack?.lyrics}</div>
-        </div>
+        <TrackLyrics
+          title={selectedTrack?.title}
+          lyrics={selectedTrack?.lyrics}
+          lyricsTitle={t('trackDetails.lyricsTitle')}
+        />
       )}
 
-      {!selectedTrack?.lyrics && (
-        <div className="text-center">
-          <span className={warningStyle}>{t('trackDetails.empty')}</span>
-        </div>
-      )}
+      {isSuccess && !selectedTrack?.lyrics && <Warning text={t('trackDetails.empty')} />}
     </div>
   );
 };

@@ -1,6 +1,6 @@
-import { useMeQuery } from '../auth/api/use-me-query';
+import { useMeQuery } from '@/features/auth/api/use-me-query';
 import { Preloader } from '@/shared/ui/preloader';
-import { MusicGenresList } from './music-genres-list';
+import { MusicGenresList } from '@/widgets/music-genre-list/music-genres-list';
 import { Warning } from '@/shared/ui/warning';
 import { useTranslation } from 'react-i18next';
 

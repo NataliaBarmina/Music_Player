@@ -1,6 +1,6 @@
-import { LoginButton } from '../login';
-import { LogoutButton } from '../logout';
-import { useMeQuery } from '../api/use-me-query';
+import { LoginButton } from '@/features/auth/login';
+import { LogoutButton } from '@/features/auth/logout';
+import { useMeQuery } from '@/features/auth/api/use-me-query';
 import { Preloader } from '@/shared/ui/preloader';
 
 //  ПРОВЕРЯЕМ АВТОРИЗАЦИЮ ПОЛЬЗОВАТЕЛЯ

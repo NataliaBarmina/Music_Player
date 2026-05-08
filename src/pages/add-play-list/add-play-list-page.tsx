@@ -1,6 +1,6 @@
-import { useMeQuery } from '../auth/api/use-me-query';
+import { useMeQuery } from '@/features/auth/api/use-me-query';
 import { Preloader } from '@/shared/ui/preloader';
-import { AddPlayListForm } from './add-play-list-form';
+import { AddPlayListForm } from '@/features/playlists/add-play-list/add-play-list-form';
 import { Warning } from '@/shared/ui/warning';
 import { useTranslation } from 'react-i18next';
 
