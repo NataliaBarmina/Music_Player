@@ -3,19 +3,19 @@ import { ErrorPage } from '@/shared/ui/error-page';
 import { Preloader } from '@/shared/ui/preloader';
 import { RefreshingIndicator } from '@/shared/ui/refreshing-indicator';
 import { SearchField } from '@/shared/ui/searchField';
-import { useMyPlayList } from './use-my-playlist';
+import { usePlayList } from './use-playlist';
 import { Warning } from '@/shared/ui/warning';
 import { useTranslation } from 'react-i18next';
-import { PlayList } from './playlist';
+import { MusicGenreItem } from '../selected-music-genre.tsx/music-genre-item';
 
-export const MyPlayList = ({ userId }: { userId: string }) => {
+export const MusicGenresList = ({ userId }: { userId: string }) => {
   const { t } = useTranslation();
 
   // const [selectedPlayListId, setSelectedPlayListId] = useState<string | null>(null);
 
   const [search, setSearch] = useState('');
 
-  const { data, isLoading, isError, error, isSuccess, isFetching } = useMyPlayList({
+  const { data, isLoading, isError, error, isSuccess, isFetching } = usePlayList({
     search,
     userId,
   });
@@ -35,7 +35,7 @@ export const MyPlayList = ({ userId }: { userId: string }) => {
         <ul>
           {data.tracks.map((track, i) => (
             <li key={track.id}>
-              <PlayList title={track.attributes.title} position={i + 1} />
+              <MusicGenreItem title={track.attributes.title} position={i + 1} />
             </li>
           ))}
         </ul>

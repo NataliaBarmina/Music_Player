@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from '../__root';
 import { Route as OauthCallbackPageRouteImport } from './../routes/oauth-callback-page';
-import { Route as MyPlaylistPageRouteImport } from './../routes/my-playlist-page';
+import { Route as MyPlaylistPageRouteImport } from '../routes/playlist-page';
 import { Route as AddPlayListPageRouteImport } from '../routes/add-play-list-page';
 import { Route as IndexRouteImport } from './../routes/index';
 import { Route as TracksTrackIdRouteImport } from './../routes/tracks.$trackId';

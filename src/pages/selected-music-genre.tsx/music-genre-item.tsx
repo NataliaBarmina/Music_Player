@@ -1,6 +1,6 @@
-export type TPlayList = { title: string; position: number };
+export type TMusicGenreItem = { title: string; position: number };
 
-export const PlayList = ({ title, position }: TPlayList) => {
+export const MusicGenreItem = ({ title, position }: TMusicGenreItem) => {
   return (
     <div className=" mt-8 text-black">
       <span>{position}) </span>

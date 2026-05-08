@@ -1,10 +1,10 @@
 import { useMeQuery } from '../auth/api/use-me-query';
 import { Preloader } from '@/shared/ui/preloader';
-import { MyPlayList } from './my-playlist';
+import { MusicGenresList } from './music-genres-list';
 import { Warning } from '@/shared/ui/warning';
 import { useTranslation } from 'react-i18next';
 
-export const MyPlayListPage = () => {
+export const PlayListPage = () => {
   const { data, isPending } = useMeQuery();
   const { t } = useTranslation();
 
@@ -16,7 +16,7 @@ export const MyPlayListPage = () => {
 
       {!data?.userId && <Warning text={t('playlists.authRequiredToGetPlayList')} />}
 
-      {data?.userId && <MyPlayList userId={data?.userId} />}
+      {data?.userId && <MusicGenresList userId={data?.userId} />}
     </div>
   );
 };

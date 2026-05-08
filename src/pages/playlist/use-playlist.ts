@@ -6,10 +6,10 @@ export type TUsePlayListTracks = {
   userId?: string;
 };
 
-export const useMyPlayList = ({ search, userId }: TUsePlayListTracks) => {
+export const usePlayList = ({ search, userId }: TUsePlayListTracks) => {
   const query = useQuery({
     refetchInterval: 5 * 60 * 1000,
-    queryKey: ['playlists', { search, userId }], //при большом количестве параметров объединять их в объекты
+    queryKey: ['myPlaylists', { search, userId }], //при большом количестве параметров объединять их в объекты
 
     queryFn: async ({ signal }) => {
       const response = await client.GET('/playlists', {

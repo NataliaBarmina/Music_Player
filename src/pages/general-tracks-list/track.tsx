@@ -1,6 +1,6 @@
 import { useNavigate } from '@tanstack/react-router';
-import { tracksStyles, trackTitleStyles, audioStyles } from '@/pages/tracks-list/styles';
-import type { TTrack } from '@/pages/tracks-list/types';
+import { tracksStyles, trackTitleStyles, audioStyles } from '@/pages/general-tracks-list/styles';
+import type { TTrack } from '@/pages/general-tracks-list/types';
 
 export const Track = ({ id, title, url, setSelectedTrackId }: TTrack) => {
   const navigate = useNavigate();

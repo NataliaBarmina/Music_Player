@@ -7,7 +7,7 @@ import { SearchField } from '@/shared/ui/searchField';
 import { useEffect } from 'react';
 import { Pagination } from '@/shared/ui/pagination';
 import { useTranslation } from 'react-i18next';
-import { Track } from '@/pages/tracks-list/track';
+import { Track } from '@/pages/general-tracks-list/track';
 import { usePlayListTracks } from './use-playlist-tracks';
 
 // todo: переделать верстку треков
