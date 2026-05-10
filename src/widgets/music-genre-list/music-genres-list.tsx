@@ -24,9 +24,13 @@ export const MusicGenresList = ({ userId }: { userId: string }) => {
       {/* && !selectedPlayListId */}
       {isSuccess && (
         <ul>
-          {data.tracks.map((track, i) => (
-            <li key={track.id}>
-              <MusicGenreItem title={track.attributes.title} position={i + 1} />
+          {data.tracks.map((playlist, i) => (
+            <li key={playlist.id}>
+              <MusicGenreItem
+                title={playlist.attributes.title}
+                position={i + 1}
+                playlistId={playlist.id}
+              />
             </li>
           ))}
         </ul>

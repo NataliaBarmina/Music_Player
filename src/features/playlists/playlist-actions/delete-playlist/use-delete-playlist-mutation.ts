@@ -1,14 +1,16 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import type { SchemaCreatePlaylistRequestPayload } from '@/shared/api/client/schema';
+import { useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { client } from '@/shared/api/client/client';
 
-export const useAddPlaylistMutation = () => {
+export const useDeletePlaylistMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (data: SchemaCreatePlaylistRequestPayload) => {
-      const response = await client.POST('/playlists', {
-        body: data,
+    mutationFn: async (trackId: string) => {
+      const response = await client.DELETE('/playlists/{playlistId}', {
+        params: {
+          path: { playlistId: trackId },
+        },
       });
 
       if (response.error) {
@@ -21,7 +23,7 @@ export const useAddPlaylistMutation = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['playlists'],
-        refetchType: 'all',
+        // refetchType: 'all',
       });
     },
     meta: { globalErrorHandler: 'on' },

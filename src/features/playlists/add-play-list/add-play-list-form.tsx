@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useAddPlaylistMutation } from './use-add-play-list-mutation';
-import { fieldStyle } from './styles';
+import { fieldStyle, buttonStyle } from './styles';
 import type { SchemaCreatePlaylistRequestPayload } from '@/shared/api/client/schema';
 
 export const AddPlayListForm = () => {
@@ -54,7 +54,7 @@ export const AddPlayListForm = () => {
       />
       {errors.data?.attributes?.title && <p>{errors.data.attributes.title.message}</p>}
 
-      <button type="submit" disabled={isSubmitting}>
+      <button type="submit" disabled={isSubmitting} className={buttonStyle}>
         {isSubmitting ? 'отправка...' : 'отправить'}
       </button>
 
