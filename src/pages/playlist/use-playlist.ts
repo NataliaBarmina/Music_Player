@@ -1,21 +1,15 @@
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { client } from '@/shared/api/client/client';
 
-export type TUsePlayListTracks = {
-  search?: string;
-  userId?: string;
-};
-
-export const usePlayList = ({ search, userId }: TUsePlayListTracks) => {
+export const usePlayList = (userId: string) => {
   const query = useQuery({
     refetchInterval: 5 * 60 * 1000,
-    queryKey: ['playlists', { search, userId }], //при большом количестве параметров объединять их в объекты
+    queryKey: ['playlists', userId],
 
     queryFn: async ({ signal }) => {
       const response = await client.GET('/playlists', {
         params: {
           query: {
-            search,
             userId,
           },
         },

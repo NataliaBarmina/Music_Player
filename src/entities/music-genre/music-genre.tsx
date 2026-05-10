@@ -1,11 +1,16 @@
-export type TMusicGenreItem = { title: string; position: number };
+import { PlaylistActions } from '@/features/playlists/playlist-actions/playlist-actions';
+import type { TMusicGenreItem } from './types';
+import { containerStyle, playlistStyle, playlistTitleStyle } from './styles';
 
 export const MusicGenreItem = ({ title, position }: TMusicGenreItem) => {
   return (
-    <div className=" mt-8 text-black">
-      <span>{position}) </span>
-      <span>{title}</span>
-      <button className="bg-inherit border-none inline-block">🗑️</button>
+    <div className={containerStyle}>
+      <div className={playlistStyle}>{position}</div>
+      <div className={playlistTitleStyle}>
+        <span>{title}</span>
+      </div>
+      <PlaylistActions />
     </div>
   );
 };
+// /10

@@ -18,6 +18,7 @@ export const useAddPlaylistMutation = () => {
       return response.data;
     },
 
+    //TODO - сделать это общей функцией для добавления, удаления, обновления и пр.
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['playlists'],

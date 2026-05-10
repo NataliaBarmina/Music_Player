@@ -1,32 +1,23 @@
-import { useState } from 'react';
 import { ErrorPage } from '@/shared/ui/error-page';
 import { Preloader } from '@/shared/ui/preloader';
 import { RefreshingIndicator } from '@/shared/ui/refreshing-indicator';
-import { SearchField } from '@/shared/ui/searchField';
 import { usePlayList } from '@/pages/playlist/use-playlist';
 import { Warning } from '@/shared/ui/warning';
 import { useTranslation } from 'react-i18next';
-import { MusicGenreItem } from '@/entities/music-genre/music-genre';
+import { MusicGenreItem } from '@/entities/music-genre';
 
 export const MusicGenresList = ({ userId }: { userId: string }) => {
   const { t } = useTranslation();
 
   // const [selectedPlayListId, setSelectedPlayListId] = useState<string | null>(null);
 
-  const [search, setSearch] = useState('');
-
-  const { data, isLoading, isError, error, isSuccess, isFetching } = usePlayList({
-    search,
-    userId,
-  });
+  const { data, isLoading, isError, error, isSuccess, isFetching } = usePlayList(userId);
 
   return (
     <div className="w-[90%] mx-auto">
       {isError && <ErrorPage error={error instanceof Error ? error : null} />}
       {isLoading && <Preloader />}
       {isFetching && <RefreshingIndicator />}
-
-      <SearchField search={search} setSearch={setSearch} />
 
       {isSuccess && !data.tracks.length && <Warning text={t('playlists.emptyTracks')} />}
 

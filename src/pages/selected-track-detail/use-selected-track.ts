@@ -5,7 +5,6 @@ export const useSelectedTrack = (selectedTrackId: string) => {
   return useQuery({
     queryKey: ['selectedTrack', selectedTrackId],
 
-    staleTime: 0,
     enabled: Boolean(selectedTrackId),
 
     queryFn: async ({ signal }) => {
