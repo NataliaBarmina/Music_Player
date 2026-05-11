@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { blockStyle } from './styles';
-import { ErrorPage } from '@/shared/ui/error-page';
-import { Preloader } from '@/shared/ui/preloader';
-import { RefreshingIndicator } from '@/shared/ui/refreshing-indicator';
-import { SearchField } from '@/shared/ui/searchField';
+import { QueryError } from '@/shared/ui/errors/queryError';
+import { Preloader } from '@/shared/ui/loaders/preloader';
+import { RefreshingIndicator } from '@/shared/ui/loaders/refreshing-indicator';
+import { SearchField } from '@/shared/ui/fields/searchField';
 import { useEffect } from 'react';
 import { Pagination } from '@/shared/ui/pagination';
 import { useTranslation } from 'react-i18next';
@@ -34,7 +34,7 @@ export const TracksList = () => {
 
   return (
     <div className={blockStyle}>
-      {isError && <ErrorPage error={error instanceof Error ? error : null} />}
+      {isError && <QueryError error={error instanceof Error ? error : null} />}
 
       {isLoading && <Preloader />}
       {isFetching && <RefreshingIndicator />}

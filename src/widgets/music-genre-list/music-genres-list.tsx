@@ -1,8 +1,8 @@
-import { ErrorPage } from '@/shared/ui/error-page';
-import { Preloader } from '@/shared/ui/preloader';
-import { RefreshingIndicator } from '@/shared/ui/refreshing-indicator';
+import { QueryError } from '@/shared/ui/errors/queryError';
+import { Preloader } from '@/shared/ui/loaders/preloader';
+import { RefreshingIndicator } from '@/shared/ui/loaders/refreshing-indicator';
 import { usePlayList } from '@/pages/playlist/use-playlist';
-import { Warning } from '@/shared/ui/warning';
+import { Warning } from '@/shared/ui/notices/warning';
 import { useTranslation } from 'react-i18next';
 import { MusicGenreItem } from '@/entities/music-genre';
 
@@ -15,7 +15,7 @@ export const MusicGenresList = ({ userId }: { userId: string }) => {
 
   return (
     <div className="w-[90%] mx-auto">
-      {isError && <ErrorPage error={error instanceof Error ? error : null} />}
+      {isError && <QueryError error={error instanceof Error ? error : null} />}
       {isLoading && <Preloader />}
       {isFetching && <RefreshingIndicator />}
 

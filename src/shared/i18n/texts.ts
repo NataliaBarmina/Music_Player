@@ -22,4 +22,11 @@ export const texts = {
     myPlaylists: 'МОИ ПЛЕЙЛИСТЫ',
     addPlayLists: 'ДОБАВИТЬ ПЛЕЙЛИСТ',
   },
+  form: {
+    titlePlaceholder: 'Введите название плейлиста',
+    titleRequired: 'Это поле обязательно',
+    createError: 'Не удалось создать плейлист',
+    submit: 'Отправить',
+    submitting: 'Отправка...',
+  },
 };

@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { Preloader } from '@/shared/ui/preloader';
+import { Preloader } from '@/shared/ui/loaders/preloader';
 import { useSelectedTrack } from './use-selected-track';
-import { ErrorPage } from '@/shared/ui/error-page';
+import { QueryError } from '@/shared/ui/errors/queryError';
 import { getRouteApi } from '@tanstack/react-router';
-import { Warning } from '@/shared/ui/warning';
+import { Warning } from '@/shared/ui/notices/warning';
 import { TrackLyrics } from '@/entities/trackLyrics/track-lyric';
 
 const routeApi = getRouteApi('/tracks/$trackId');
@@ -26,7 +26,7 @@ export const TrackDetailPage = () => {
     <div className="mx-auto h-[99vh] w-full">
       <h1>{t('trackDetails.title')}</h1>
 
-      {isError && <ErrorPage error={error instanceof Error ? error : null} />}
+      {isError && <QueryError error={error instanceof Error ? error : null} />}
       {isLoading && <Preloader />}
 
       {isSuccess && (

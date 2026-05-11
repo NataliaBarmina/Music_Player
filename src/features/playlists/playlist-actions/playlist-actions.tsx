@@ -4,10 +4,10 @@ import { EditPlaylist } from './edit-playlist/edit-playlist';
 
 export const PlaylistActions = ({ playlistId }: { playlistId: string }) => {
   return (
-    <div className=" w-[50%] flex justify-evenly items-center ">
+    <div className=" w-[50%] flex justify-evenly items-center">
       {}
       <DeletePlaylist playlistId={playlistId} />
-      <EditPlaylist />
+      <EditPlaylist playlistId={playlistId} />
 
       <ReorderPlaylistIcon />
 

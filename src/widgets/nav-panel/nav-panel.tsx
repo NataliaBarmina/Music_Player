@@ -15,7 +15,7 @@ export const NavPanel = () => {
         {t('navigation.tracksList')}
       </Link>
 
-      <Link className={linkStyle} to="/my-playlist-page">
+      <Link className={linkStyle} to="/playlist-page">
         {t('navigation.myPlaylists')}
       </Link>
 

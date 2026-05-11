@@ -1,9 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { useAddPlaylistMutation } from './use-add-play-list-mutation';
-import { fieldStyle, buttonStyle } from './styles';
 import type { SchemaCreatePlaylistRequestPayload } from '@/shared/api/client/schema';
+import { FieldError } from '@/shared/ui/errors/fieldError';
+import { useTranslation } from 'react-i18next';
 
 export const AddPlayListForm = () => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -16,6 +18,7 @@ export const AddPlayListForm = () => {
         type: 'playlists',
         attributes: {
           title: '',
+          description: '',
         },
       },
     },
@@ -33,33 +36,28 @@ export const AddPlayListForm = () => {
 
       setError('root.server', {
         type: 'server',
-        message: 'Что-то пошло не так',
-      });
-      setError('data.attributes.title', {
-        type: 'server',
-        message: 'Такой плейлист уже существует',
+        message: t('form.createError'),
       });
     }
   };
+  const titleError = errors.data?.attributes?.title;
+  const serverError = errors.root?.server;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-[60%] mx-auto">
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full mx-auto text-center">
       <input
-        placeholder="введите название плейлиста"
+        placeholder={t('form.titlePlaceholder')}
         {...register('data.attributes.title', {
-          required: 'Введите название плейлиста',
+          required: t('form.titleRequired'),
         })}
-        className={fieldStyle}
+        className="input mb-1"
       />
-      {errors.data?.attributes?.title && (
-        <p className="bg-red-400">{errors.data.attributes.title.message}</p>
-      )}
+      {titleError && <FieldError message={titleError.message} />}
+      {serverError && <FieldError message={serverError.message} />}
 
-      <button type="submit" disabled={isSubmitting} className={buttonStyle}>
-        {isSubmitting ? 'отправка...' : 'отправить'}
+      <button type="submit" disabled={isSubmitting} className="button">
+        {isSubmitting ? t('form.submitting') : t('form.submit')}
       </button>
-
-      {errors.root?.server && <p className="bg-red-400">{errors.root?.server.message}</p>}
     </form>
   );
 };

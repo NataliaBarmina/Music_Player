@@ -1,4 +1,3 @@
-import { buttonStyle } from '../styles';
 import { useOAuthLogin } from './internal';
 
 export const LoginButton = () => {
@@ -6,7 +5,7 @@ export const LoginButton = () => {
 
   return (
     <div className="text-right">
-      <button className={buttonStyle} onClick={handleLogicClick}>
+      <button className="button-primary" onClick={handleLogicClick}>
         login
       </button>
     </div>
