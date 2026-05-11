@@ -4,6 +4,7 @@ import { buttonStyle } from '../styles';
 
 export const DeletePlaylist = ({ playlistId }: { playlistId: string }) => {
   const { mutate, isPending } = useDeletePlaylistMutation();
+
   const handleDeletePlaylist = () => {
     mutate(playlistId);
   };

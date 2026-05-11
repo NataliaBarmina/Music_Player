@@ -1,18 +1,14 @@
-import {
-  EditPlaylistIcon,
-  ReorderPlaylistIcon,
-  DeleteCoverIcon,
-  AddCoverIcon,
-} from '@/shared/ui/icons';
+import { ReorderPlaylistIcon, DeleteCoverIcon, AddCoverIcon } from '@/shared/ui/icons';
 import { DeletePlaylist } from './delete-playlist/delete-playlist';
+import { EditPlaylist } from './edit-playlist/edit-playlist';
 
 export const PlaylistActions = ({ playlistId }: { playlistId: string }) => {
   return (
     <div className=" w-[50%] flex justify-evenly items-center ">
       {}
       <DeletePlaylist playlistId={playlistId} />
+      <EditPlaylist />
 
-      <EditPlaylistIcon />
       <ReorderPlaylistIcon />
 
       <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>

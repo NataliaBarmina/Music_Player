@@ -24,6 +24,6 @@ export const useAddPlaylistMutation = () => {
         refetchType: 'all',
       });
     },
-    meta: { globalErrorHandler: 'on' },
+    // meta: { globalErrorHandler: 'on' }, // включить глобальную обработку ошибок для этой mutation
   });
 };

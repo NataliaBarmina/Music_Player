@@ -23,9 +23,8 @@ export const useDeletePlaylistMutation = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['playlists'],
-        // refetchType: 'all',
+        refetchType: 'all', // обновить весть кэш по ключу (активные и неактивные квериес)
       });
     },
-    meta: { globalErrorHandler: 'on' },
   });
 };

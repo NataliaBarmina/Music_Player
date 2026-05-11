@@ -16,7 +16,6 @@ export const AddPlayListForm = () => {
         type: 'playlists',
         attributes: {
           title: '',
-          description: '',
         },
       },
     },
@@ -52,13 +51,15 @@ export const AddPlayListForm = () => {
         })}
         className={fieldStyle}
       />
-      {errors.data?.attributes?.title && <p>{errors.data.attributes.title.message}</p>}
+      {errors.data?.attributes?.title && (
+        <p className="bg-red-400">{errors.data.attributes.title.message}</p>
+      )}
 
       <button type="submit" disabled={isSubmitting} className={buttonStyle}>
         {isSubmitting ? 'отправка...' : 'отправить'}
       </button>
 
-      {errors.root?.server && <p>{errors.root?.server.message}</p>}
+      {errors.root?.server && <p className="bg-red-400">{errors.root?.server.message}</p>}
     </form>
   );
 };
