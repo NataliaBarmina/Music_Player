@@ -15,11 +15,11 @@ export const NavPanel = () => {
         {t('navigation.tracksList')}
       </Link>
 
-      <Link className={linkStyle} to="/playlist-page">
+      <Link className={linkStyle} to="/playlist">
         {t('navigation.myPlaylists')}
       </Link>
 
-      <Link className={linkStyle} to="/add-play-list-page">
+      <Link className={linkStyle} to="/playlists/add">
         {t('navigation.addPlayLists')}
       </Link>
     </div>

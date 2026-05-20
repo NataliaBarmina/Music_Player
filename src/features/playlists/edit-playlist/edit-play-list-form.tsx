@@ -39,7 +39,7 @@ export const EditPlayListForm = () => {
         },
       },
     });
-    navigate({ to: '/playlist-page' });
+    navigate({ to: '/playlist' });
   };
   const titleError = errors.playlistTitle;
 

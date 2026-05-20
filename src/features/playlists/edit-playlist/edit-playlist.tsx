@@ -9,7 +9,7 @@ export const EditPlaylist = ({ playlistId }: { playlistId: string }) => {
       type="button"
       onClick={() =>
         navigate({
-          to: '/edit-play-list-form/$playlistId',
+          to: '/playlists/$playlistId/edit',
           params: {
             playlistId,
           },

@@ -1,5 +1,5 @@
 import { useGetPlaylists } from '@/widgets/music-genre-list/use-get-playlist';
-import { Route } from '@/app/routes/edit-play-list-form.$playlistId';
+import { Route } from '@/app/routes/playlists.$playlistId.edit';
 import { useMeQuery } from '@/features/auth/api/use-me-query';
 
 export const getPlayListTitle = () => {

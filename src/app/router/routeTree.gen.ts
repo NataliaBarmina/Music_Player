@@ -9,26 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './../routes/__root'
-import { Route as PlaylistPageRouteImport } from './../routes/playlist-page'
-import { Route as OauthCallbackPageRouteImport } from './../routes/oauth-callback-page'
-import { Route as AddPlayListPageRouteImport } from './../routes/add-play-list-page'
+import { Route as PlaylistRouteImport } from './../routes/playlist'
+import { Route as OauthCallbackRouteImport } from './../routes/oauth-callback'
 import { Route as IndexRouteImport } from './../routes/index'
 import { Route as TracksTrackIdRouteImport } from './../routes/tracks.$trackId'
-import { Route as EditPlayListFormPlaylistIdRouteImport } from './../routes/edit-play-list-form.$playlistId'
+import { Route as PlaylistsAddRouteImport } from './../routes/playlists.add'
+import { Route as PlaylistsPlaylistIdEditRouteImport } from './../routes/playlists.$playlistId.edit'
 
-const PlaylistPageRoute = PlaylistPageRouteImport.update({
-  id: '/playlist-page',
-  path: '/playlist-page',
+const PlaylistRoute = PlaylistRouteImport.update({
+  id: '/playlist',
+  path: '/playlist',
   getParentRoute: () => rootRouteImport,
 } as any)
-const OauthCallbackPageRoute = OauthCallbackPageRouteImport.update({
-  id: '/oauth-callback-page',
-  path: '/oauth-callback-page',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AddPlayListPageRoute = AddPlayListPageRouteImport.update({
-  id: '/add-play-list-page',
-  path: '/add-play-list-page',
+const OauthCallbackRoute = OauthCallbackRouteImport.update({
+  id: '/oauth-callback',
+  path: '/oauth-callback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -41,95 +36,92 @@ const TracksTrackIdRoute = TracksTrackIdRouteImport.update({
   path: '/tracks/$trackId',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EditPlayListFormPlaylistIdRoute =
-  EditPlayListFormPlaylistIdRouteImport.update({
-    id: '/edit-play-list-form/$playlistId',
-    path: '/edit-play-list-form/$playlistId',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const PlaylistsAddRoute = PlaylistsAddRouteImport.update({
+  id: '/playlists/add',
+  path: '/playlists/add',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlaylistsPlaylistIdEditRoute = PlaylistsPlaylistIdEditRouteImport.update({
+  id: '/playlists/$playlistId/edit',
+  path: '/playlists/$playlistId/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/add-play-list-page': typeof AddPlayListPageRoute
-  '/oauth-callback-page': typeof OauthCallbackPageRoute
-  '/playlist-page': typeof PlaylistPageRoute
-  '/edit-play-list-form/$playlistId': typeof EditPlayListFormPlaylistIdRoute
+  '/oauth-callback': typeof OauthCallbackRoute
+  '/playlist': typeof PlaylistRoute
+  '/playlists/add': typeof PlaylistsAddRoute
   '/tracks/$trackId': typeof TracksTrackIdRoute
+  '/playlists/$playlistId/edit': typeof PlaylistsPlaylistIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/add-play-list-page': typeof AddPlayListPageRoute
-  '/oauth-callback-page': typeof OauthCallbackPageRoute
-  '/playlist-page': typeof PlaylistPageRoute
-  '/edit-play-list-form/$playlistId': typeof EditPlayListFormPlaylistIdRoute
+  '/oauth-callback': typeof OauthCallbackRoute
+  '/playlist': typeof PlaylistRoute
+  '/playlists/add': typeof PlaylistsAddRoute
   '/tracks/$trackId': typeof TracksTrackIdRoute
+  '/playlists/$playlistId/edit': typeof PlaylistsPlaylistIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/add-play-list-page': typeof AddPlayListPageRoute
-  '/oauth-callback-page': typeof OauthCallbackPageRoute
-  '/playlist-page': typeof PlaylistPageRoute
-  '/edit-play-list-form/$playlistId': typeof EditPlayListFormPlaylistIdRoute
+  '/oauth-callback': typeof OauthCallbackRoute
+  '/playlist': typeof PlaylistRoute
+  '/playlists/add': typeof PlaylistsAddRoute
   '/tracks/$trackId': typeof TracksTrackIdRoute
+  '/playlists/$playlistId/edit': typeof PlaylistsPlaylistIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/add-play-list-page'
-    | '/oauth-callback-page'
-    | '/playlist-page'
-    | '/edit-play-list-form/$playlistId'
+    | '/oauth-callback'
+    | '/playlist'
+    | '/playlists/add'
     | '/tracks/$trackId'
+    | '/playlists/$playlistId/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/add-play-list-page'
-    | '/oauth-callback-page'
-    | '/playlist-page'
-    | '/edit-play-list-form/$playlistId'
+    | '/oauth-callback'
+    | '/playlist'
+    | '/playlists/add'
     | '/tracks/$trackId'
+    | '/playlists/$playlistId/edit'
   id:
     | '__root__'
     | '/'
-    | '/add-play-list-page'
-    | '/oauth-callback-page'
-    | '/playlist-page'
-    | '/edit-play-list-form/$playlistId'
+    | '/oauth-callback'
+    | '/playlist'
+    | '/playlists/add'
     | '/tracks/$trackId'
+    | '/playlists/$playlistId/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AddPlayListPageRoute: typeof AddPlayListPageRoute
-  OauthCallbackPageRoute: typeof OauthCallbackPageRoute
-  PlaylistPageRoute: typeof PlaylistPageRoute
-  EditPlayListFormPlaylistIdRoute: typeof EditPlayListFormPlaylistIdRoute
+  OauthCallbackRoute: typeof OauthCallbackRoute
+  PlaylistRoute: typeof PlaylistRoute
+  PlaylistsAddRoute: typeof PlaylistsAddRoute
   TracksTrackIdRoute: typeof TracksTrackIdRoute
+  PlaylistsPlaylistIdEditRoute: typeof PlaylistsPlaylistIdEditRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/playlist-page': {
-      id: '/playlist-page'
-      path: '/playlist-page'
-      fullPath: '/playlist-page'
-      preLoaderRoute: typeof PlaylistPageRouteImport
+    '/playlist': {
+      id: '/playlist'
+      path: '/playlist'
+      fullPath: '/playlist'
+      preLoaderRoute: typeof PlaylistRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/oauth-callback-page': {
-      id: '/oauth-callback-page'
-      path: '/oauth-callback-page'
-      fullPath: '/oauth-callback-page'
-      preLoaderRoute: typeof OauthCallbackPageRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/add-play-list-page': {
-      id: '/add-play-list-page'
-      path: '/add-play-list-page'
-      fullPath: '/add-play-list-page'
-      preLoaderRoute: typeof AddPlayListPageRouteImport
+    '/oauth-callback': {
+      id: '/oauth-callback'
+      path: '/oauth-callback'
+      fullPath: '/oauth-callback'
+      preLoaderRoute: typeof OauthCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -146,11 +138,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TracksTrackIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/edit-play-list-form/$playlistId': {
-      id: '/edit-play-list-form/$playlistId'
-      path: '/edit-play-list-form/$playlistId'
-      fullPath: '/edit-play-list-form/$playlistId'
-      preLoaderRoute: typeof EditPlayListFormPlaylistIdRouteImport
+    '/playlists/add': {
+      id: '/playlists/add'
+      path: '/playlists/add'
+      fullPath: '/playlists/add'
+      preLoaderRoute: typeof PlaylistsAddRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/playlists/$playlistId/edit': {
+      id: '/playlists/$playlistId/edit'
+      path: '/playlists/$playlistId/edit'
+      fullPath: '/playlists/$playlistId/edit'
+      preLoaderRoute: typeof PlaylistsPlaylistIdEditRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -158,11 +157,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AddPlayListPageRoute: AddPlayListPageRoute,
-  OauthCallbackPageRoute: OauthCallbackPageRoute,
-  PlaylistPageRoute: PlaylistPageRoute,
-  EditPlayListFormPlaylistIdRoute: EditPlayListFormPlaylistIdRoute,
+  OauthCallbackRoute: OauthCallbackRoute,
+  PlaylistRoute: PlaylistRoute,
+  PlaylistsAddRoute: PlaylistsAddRoute,
   TracksTrackIdRoute: TracksTrackIdRoute,
+  PlaylistsPlaylistIdEditRoute: PlaylistsPlaylistIdEditRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
