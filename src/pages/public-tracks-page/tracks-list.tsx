@@ -7,10 +7,8 @@ import { SearchField } from '@/shared/ui/fields/searchField';
 import { useEffect } from 'react';
 import { Pagination } from '@/shared/ui/pagination';
 import { useTranslation } from 'react-i18next';
-import { Track } from '@/entities/track/track';
+import { Track } from '@/entities/track';
 import { usePlayListTracks } from './use-playlist-tracks';
-
-// todo: переделать верстку треков
 
 export const TracksList = () => {
   const { t } = useTranslation();

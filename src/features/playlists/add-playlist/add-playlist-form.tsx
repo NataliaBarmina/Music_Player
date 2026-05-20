@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useAddPlaylistMutation } from './use-add-play-list-mutation';
+import { useAddPlaylistMutation } from './use-add-playlist-mutation';
 import type { SchemaCreatePlaylistRequestPayload } from '@/shared/api/client/schema';
 import { FieldError } from '@/shared/ui/errors/fieldError';
 import { useTranslation } from 'react-i18next';

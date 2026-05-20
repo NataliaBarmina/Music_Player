@@ -4,7 +4,7 @@ import { useSelectedTrack } from './use-selected-track';
 import { QueryError } from '@/shared/ui/errors/queryError';
 import { getRouteApi } from '@tanstack/react-router';
 import { Warning } from '@/shared/ui/notices/warning';
-import { TrackLyrics } from '@/entities/trackLyrics/track-lyric';
+import { TrackLyrics } from '@/entities/track-lyric';
 
 const routeApi = getRouteApi('/tracks/$trackId');
 

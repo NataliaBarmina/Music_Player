@@ -1,4 +1,4 @@
-import { PlaylistActions } from '@/features/playlists/playlist-actions';
+import { PlaylistActions } from '@/widgets/playlist-actions/playlist-actions';
 import type { TMusicGenreItem } from './types';
 import { containerStyle, numberStyle, playlistTitleStyle } from './styles';
 

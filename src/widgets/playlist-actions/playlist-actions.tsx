@@ -1,6 +1,6 @@
 import { ReorderPlaylistIcon, DeleteCoverIcon, AddCoverIcon } from '@/shared/ui/icons';
-import { DeletePlaylist } from './delete-playlist/delete-playlist';
-import { EditPlaylist } from './edit-playlist/edit-playlist';
+import { DeletePlaylist } from '@/features/playlists/delete-playlist/delete-playlist';
+import { EditPlaylist } from '@/features/playlists/edit-playlist/edit-playlist';
 
 export const PlaylistActions = ({ playlistId }: { playlistId: string }) => {
   return (
