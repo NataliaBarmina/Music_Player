@@ -5,7 +5,7 @@ export const useSelectedTrack = (selectedTrackId: string) => {
   return useQuery({
     queryKey: ['selectedTrack', selectedTrackId],
 
-    enabled: Boolean(selectedTrackId),
+    enabled: Boolean(selectedTrackId), // срабатывает только когда есть selectedTrackId
 
     queryFn: async ({ signal }) => {
       const response = await client.GET('/playlists/tracks/{trackId}', {

@@ -1,7 +1,7 @@
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { client } from '@/shared/api/client/client';
 
-export const usePlayList = (userId: string) => {
+export const useGetPlaylists = (userId: string) => {
   const query = useQuery({
     refetchInterval: 5 * 60 * 1000,
     queryKey: ['playlists', userId],
@@ -20,7 +20,7 @@ export const usePlayList = (userId: string) => {
       }
 
       return {
-        tracks: response.data?.data ?? [],
+        playlists: response.data?.data ?? [],
       };
     },
 
@@ -29,6 +29,6 @@ export const usePlayList = (userId: string) => {
 
   return {
     ...query,
-    tracks: query.data?.tracks ?? [],
+    playlists: query.data?.playlists ?? [],
   };
 };
