@@ -1,6 +1,9 @@
 import { useLogicMutation } from './use-logic-mutation';
+import { useTranslation } from 'react-i18next';
 
 export const LogoutButton = ({ login }: { login: string }) => {
+  const { t } = useTranslation();
+
   const mutation = useLogicMutation();
 
   return (
@@ -12,7 +15,7 @@ export const LogoutButton = ({ login }: { login: string }) => {
           mutation.mutate();
         }}
       >
-        Logout
+        {t('button.logout')}
       </button>
     </div>
   );

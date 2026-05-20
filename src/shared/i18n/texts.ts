@@ -13,6 +13,7 @@ export const texts = {
   playlists: {
     title: 'Мои плейлисты',
     addPlayList: 'Добавление плейлиста',
+    editPlaylist: 'Редактирование плейлиста',
     emptyTracks: 'У вас нет добавленных плейлистов',
     authRequiredToAddPlayList: 'Авторизуйтесь, чтобы добавить плейлисты',
     authRequiredToGetPlayList: 'Авторизуйтесь, чтобы получить плейлисты',
@@ -28,5 +29,9 @@ export const texts = {
     createError: 'Не удалось создать плейлист',
     submit: 'Отправить',
     submitting: 'Отправка...',
+  },
+  button: {
+    login: 'Войти',
+    logout: 'Выйти',
   },
 };

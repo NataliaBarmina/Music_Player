@@ -3,6 +3,7 @@ import { useAddPlaylistMutation } from './use-add-play-list-mutation';
 import type { SchemaCreatePlaylistRequestPayload } from '@/shared/api/client/schema';
 import { FieldError } from '@/shared/ui/errors/fieldError';
 import { useTranslation } from 'react-i18next';
+import { FormButton } from '@/shared/ui/buttons/form-button';
 
 export const AddPlayListForm = () => {
   const { t } = useTranslation();
@@ -55,9 +56,7 @@ export const AddPlayListForm = () => {
       {titleError && <FieldError message={titleError.message} />}
       {serverError && <FieldError message={serverError.message} />}
 
-      <button type="submit" disabled={isSubmitting} className="button">
-        {isSubmitting ? t('form.submitting') : t('form.submit')}
-      </button>
+      <FormButton isSubmitting={isSubmitting} />
     </form>
   );
 };

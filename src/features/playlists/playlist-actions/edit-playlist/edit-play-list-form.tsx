@@ -2,10 +2,9 @@ import { useForm } from 'react-hook-form';
 import { getPlayListTitle } from './get-playlist-title';
 import { useUpdatePlaylist } from './use-update-playlist';
 import { useNavigate } from '@tanstack/react-router';
-
-//todo -обработка ошибок, трай кетч, проброс ошибок, компоненты ошибок
-//todo - ай 18 некст
-//todo стили и типы вынести
+import { useTranslation } from 'react-i18next';
+import { FieldError } from '@/shared/ui/errors/fieldError';
+import { FormButton } from '@/shared/ui/buttons/form-button';
 
 type Inputs = {
   playlistTitle: string;
@@ -13,13 +12,14 @@ type Inputs = {
 
 export const EditPlayListForm = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const { playlistTitle, playlistId } = getPlayListTitle();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<Inputs>({
     defaultValues: {
       playlistTitle,
@@ -41,18 +41,17 @@ export const EditPlayListForm = () => {
     });
     navigate({ to: '/playlist-page' });
   };
+  const titleError = errors.playlistTitle;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full mx-auto text-center mt-10">
-      <h1>Редактирование плейлиста</h1>
+      <h1>{t('playlists.editPlaylist')}</h1>
 
       <input {...register('playlistTitle', { required: true })} className="input mb-14 " />
 
-      {errors.playlistTitle && <span>This field is required</span>}
+      {titleError && <FieldError message={t('form.titleRequired')} />}
 
-      <button type="submit" className="button">
-        отправить
-      </button>
+      <FormButton isSubmitting={isSubmitting} />
     </form>
   );
 };
