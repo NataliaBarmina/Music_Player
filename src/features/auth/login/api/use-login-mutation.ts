@@ -2,7 +2,7 @@ import { client } from '@/shared/api/client/client';
 import { useMutation } from '@tanstack/react-query';
 import { useQueryClient } from '@tanstack/react-query';
 import { CALLBACK_URL } from '@shared/api/apiConfig';
-import type { TCode, TData } from './types';
+import type { TCode, TData } from '../types/types';
 import { tokenStorage } from '@/shared/api/token-storage';
 
 // КАСТОМНЫЙ ХУК ДЛЯ ЛОГИНИЗАЦИИ ПОЛЬЗОВАТЕЛЯ ПОСЛЕ OAuth
