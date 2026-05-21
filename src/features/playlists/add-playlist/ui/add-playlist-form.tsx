@@ -4,13 +4,15 @@ import type { SchemaCreatePlaylistRequestPayload } from '@/shared/api/client/sch
 import { FieldError } from '@/shared/ui/errors/fieldError';
 import { useTranslation } from 'react-i18next';
 import { FormButton } from '@/shared/ui/buttons/form-button';
+import { useNavigate } from '@tanstack/react-router';
 
 export const AddPlayListForm = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
-    reset,
     setError,
     formState: { errors, isSubmitting },
   } = useForm<SchemaCreatePlaylistRequestPayload>({
@@ -31,7 +33,7 @@ export const AddPlayListForm = () => {
     try {
       await mutateAsync(data);
 
-      reset();
+      navigate({ to: '/playlist' });
     } catch (error) {
       console.warn(error);
 

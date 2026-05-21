@@ -4,7 +4,7 @@ import { AddPlayListForm } from './add-playlist-form';
 import { Warning } from '@/shared/ui/notices/warning';
 import { useTranslation } from 'react-i18next';
 
-export const AddPlayListPage = () => {
+export const AddPlayList = () => {
   const { t } = useTranslation();
 
   const { data, isPending } = useMeQuery();
