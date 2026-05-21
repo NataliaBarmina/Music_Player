@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import type { SchemaUpdatePlaylistRequestPayload } from '@/shared/api/client/schema';
 import { client } from '@/shared/api/client/client';
 
-export const useUpdatePlaylist = (playlistId: string) => {
+export const useUpdatePlaylistMutation = (playlistId: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({

@@ -1,5 +1,5 @@
 import { DeletePlaylistIcon } from '@/shared/ui/icons';
-import { useDeletePlaylistMutation } from './use-delete-playlist-mutation';
+import { useDeletePlaylistMutation } from '../api/use-delete-playlist-mutation';
 
 export const DeletePlaylist = ({ playlistId }: { playlistId: string }) => {
   const { mutate, isPending } = useDeletePlaylistMutation();

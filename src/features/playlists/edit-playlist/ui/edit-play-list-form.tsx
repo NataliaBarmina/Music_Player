@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { getPlayListTitle } from './get-playlist-title';
-import { useUpdatePlaylist } from './use-update-playlist';
+import { useEditPlaylistData } from '../model/use-edit-playlist-data';
+import { useUpdatePlaylistMutation } from '../api/use-update-playlist-mutation';
 import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { FieldError } from '@/shared/ui/errors/fieldError';
@@ -14,7 +14,7 @@ export const EditPlayListForm = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const { playlistTitle, playlistId } = getPlayListTitle();
+  const { playlistTitle, playlistId } = useEditPlaylistData();
 
   const {
     register,
@@ -26,7 +26,7 @@ export const EditPlayListForm = () => {
     },
   });
 
-  const { mutateAsync } = useUpdatePlaylist(playlistId);
+  const { mutateAsync } = useUpdatePlaylistMutation(playlistId);
 
   const onSubmit = async (data: Inputs) => {
     await mutateAsync({
