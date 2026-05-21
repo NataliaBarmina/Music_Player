@@ -12,7 +12,7 @@ import { tokenStorage } from '@/shared/api/token-storage';
 // 3) сохраняем их в хранилище
 // 4) обновляем данные авторизации в React Query, чтобы приложение узнало, что пользователь теперь залогинен
 
-export const useLogicMutation = () => {
+export const useLoginMutation = () => {
   const queryClient = useQueryClient(); // чтобы потом обновить кэш запросов
 
   const mutation = useMutation({

@@ -1,5 +1,5 @@
 import { CALLBACK_URL } from '@shared/api/apiConfig';
-import { useLogicMutation } from './use-logic-mutation';
+import { useLoginMutation } from './use-login-mutation';
 
 //КАСТОМНЫЙ ХУК -ОРКЕСТРАТОР OAuth-ПРОЦЕССА НА КЛИЕНТЕ
 
@@ -8,7 +8,7 @@ import { useLogicMutation } from './use-logic-mutation';
 //3) запускает  mutation.mutate({ code })
 
 export const useOAuthLogin = () => {
-  const mutation = useLogicMutation();
+  const mutation = useLoginMutation();
 
   const handleLogicClick = () => {
     window.removeEventListener('message', handleOAuthMessage);

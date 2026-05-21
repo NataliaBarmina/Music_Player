@@ -1,4 +1,4 @@
-import { useLogoutMutation } from '../api/use-logout-mutation';
+import { useLogoutMutation } from './use-logout-mutation';
 import { useTranslation } from 'react-i18next';
 
 export const LogoutButton = ({ login }: { login: string }) => {

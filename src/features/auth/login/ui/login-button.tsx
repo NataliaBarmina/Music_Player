@@ -1,4 +1,4 @@
-import { useOAuthLogin } from './internal';
+import { useOAuthLogin } from '../api/use-OAuth-login';
 import { useTranslation } from 'react-i18next';
 
 export const LoginButton = () => {

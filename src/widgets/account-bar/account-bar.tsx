@@ -1,4 +1,4 @@
-import { LoginButton } from '@/features/auth/ui/login';
+import { LoginButton } from '@/features/auth';
 import { LogoutButton } from '@/features/auth';
 import { useMeQuery } from '@/features/auth';
 import { Preloader } from '@/shared/ui/loaders/preloader';
