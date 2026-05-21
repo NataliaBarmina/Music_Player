@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { client } from '@/shared/api/client/client';
 
-export const useSelectedTrack = (selectedTrackId: string) => {
+export const useSelectedTrackQuery = (selectedTrackId: string) => {
   return useQuery({
     queryKey: ['selectedTrack', selectedTrackId],
 

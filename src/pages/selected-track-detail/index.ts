@@ -1,1 +1,1 @@
-export { TrackDetailPage } from './selected-track-detail-page.tsx';
+export { SelectedTrackDetail } from './ui/selected-track-detail.tsx';

@@ -1,1 +1,2 @@
-export { AccountBar } from '@/widgets/account-bar/account-bar';
+export { useMeQuery } from './api/use-me-query';
+export { LogoutButton } from './ui/logout-button';

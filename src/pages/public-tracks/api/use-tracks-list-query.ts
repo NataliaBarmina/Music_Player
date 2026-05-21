@@ -1,8 +1,8 @@
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { client } from '@/shared/api/client/client';
-import type { TUsePlayListTracks } from './types';
+import type { TUseTracksListQuery } from '../types';
 
-export const usePlayListTracks = ({ page, search }: TUsePlayListTracks) => {
+export const useTracksListQuery = ({ page, search }: TUseTracksListQuery) => {
   const query = useQuery({
     refetchInterval: 5 * 60 * 1000,
     queryKey: ['generalTracks', { page, search }], //при большом количестве параметров объединять их в объекты - поможет избежать путаницы

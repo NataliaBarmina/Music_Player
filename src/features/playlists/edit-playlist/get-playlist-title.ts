@@ -1,12 +1,12 @@
-import { useGetPlaylists } from '@/widgets/music-genre-list/use-get-playlist';
+import { usePlaylistsQuery } from '@/pages/playlist';
 import { Route } from '@/app/routes/playlists.$playlistId.edit';
-import { useMeQuery } from '@/features/auth/api/use-me-query';
+import { useMeQuery } from '@/features/auth';
 
 export const getPlayListTitle = () => {
   const { data } = useMeQuery();
   const { playlistId } = Route.useParams();
 
-  const { playlists } = useGetPlaylists(data?.userId!);
+  const { playlists } = usePlaylistsQuery(data?.userId!);
   const playlist = playlists.find((playlist) => playlist.id === playlistId);
 
   return { playlistTitle: playlist?.attributes.title, playlistId };

@@ -1,10 +1,10 @@
-import { useLogicMutation } from './use-logic-mutation';
+import { useLogoutMutation } from '../api/use-logout-mutation';
 import { useTranslation } from 'react-i18next';
 
 export const LogoutButton = ({ login }: { login: string }) => {
   const { t } = useTranslation();
 
-  const mutation = useLogicMutation();
+  const mutation = useLogoutMutation();
 
   return (
     <div className=" w-full text-right ">

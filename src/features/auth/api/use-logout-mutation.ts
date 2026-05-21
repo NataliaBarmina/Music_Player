@@ -9,7 +9,7 @@ import { tokenStorage } from '@/shared/api/token-storage';
 // 3) после успешного выхода удаляем токены из хранилища
 // 4) сбрасываем данные текущего пользователя в React Query
 
-export const useLogicMutation = () => {
+export const useLogoutMutation = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({

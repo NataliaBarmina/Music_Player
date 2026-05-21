@@ -1,6 +1,6 @@
 export type TTrackList = { userId?: string };
 
-export type TUsePlayListTracks = {
+export type TUseTracksListQuery = {
   page?: number;
   search?: string;
   userId?: string;

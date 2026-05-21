@@ -1,1 +1,1 @@
-export { AddPlayListPage } from '@/pages/add-playlist/add-playlist-page';
+export { AddPlayListPage } from '@/features/playlists/add-playlist/add-playlist-page';

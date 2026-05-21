@@ -1,6 +1,6 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { NavPanel } from '@/widgets/nav-panel/nav-panel';
-import { AccountBar } from '@/features/auth';
+import { AccountBar } from '@/widgets/account-bar/account-bar';
 
 export const Route = createRootRoute({
   component: () => (

@@ -1,4 +1,4 @@
-import { useMeQuery } from '@/features/auth/api/use-me-query';
+import { useMeQuery } from '@/features/auth';
 import { Preloader } from '@/shared/ui/loaders/preloader';
 import { AddPlayListForm } from '@/features/playlists/add-playlist/add-playlist-form';
 import { Warning } from '@/shared/ui/notices/warning';

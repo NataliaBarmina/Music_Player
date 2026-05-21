@@ -19,8 +19,8 @@ export const texts = {
     authRequiredToGetPlayList: 'Авторизуйтесь, чтобы получить плейлисты',
   },
   navigation: {
-    tracksList: 'СПИСОК ТРЕКОВ',
-    myPlaylists: 'МОИ ПЛЕЙЛИСТЫ',
+    tracksList: '𝄞 СПИСОК ТРЕКОВ',
+    myPlaylists: '☰ МОИ ПЛЕЙЛИСТЫ',
     addPlayLists: 'ДОБАВИТЬ ПЛЕЙЛИСТ',
   },
   form: {

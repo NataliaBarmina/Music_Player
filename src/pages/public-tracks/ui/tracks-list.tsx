@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { Pagination } from '@/shared/ui/pagination';
 import { useTranslation } from 'react-i18next';
 import { Track } from '@/entities/track';
-import { usePlayListTracks } from './use-playlist-tracks';
+import { useTracksListQuery } from '../api/use-tracks-list-query';
 
 export const TracksList = () => {
   const { t } = useTranslation();
@@ -28,7 +28,7 @@ export const TracksList = () => {
     error,
     isSuccess,
     isFetching,
-  } = usePlayListTracks({ page, search });
+  } = useTracksListQuery({ page, search });
 
   return (
     <div className={blockStyle}>

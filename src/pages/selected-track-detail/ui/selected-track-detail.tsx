@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Preloader } from '@/shared/ui/loaders/preloader';
-import { useSelectedTrack } from './use-selected-track';
+import { useSelectedTrackQuery } from '../api/use-selected-track-query';
 import { QueryError } from '@/shared/ui/errors/queryError';
 import { getRouteApi } from '@tanstack/react-router';
 import { Warning } from '@/shared/ui/notices/warning';
@@ -8,7 +8,7 @@ import { TrackLyrics } from '@/entities/track-lyric';
 
 const routeApi = getRouteApi('/tracks/$trackId');
 
-export const TrackDetailPage = () => {
+export const SelectedTrackDetail = () => {
   const { t } = useTranslation();
 
   const { trackId } = routeApi.useParams();
@@ -20,7 +20,7 @@ export const TrackDetailPage = () => {
     isError,
     error,
     isSuccess,
-  } = useSelectedTrack(selectedTrackId);
+  } = useSelectedTrackQuery(selectedTrackId);
 
   return (
     <div className="mx-auto h-[99vh] w-full">
