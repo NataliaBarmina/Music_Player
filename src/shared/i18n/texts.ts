@@ -15,7 +15,6 @@ export const texts = {
     addPlayList: 'Добавление плейлиста',
     editPlaylist: 'Редактирование плейлиста',
     emptyTracks: 'У вас нет добавленных плейлистов',
-    authRequiredToAddPlayList: 'Авторизуйтесь, чтобы добавить плейлисты',
     authRequiredToGetPlayList: 'Авторизуйтесь, чтобы получить плейлисты',
   },
   navigation: {
@@ -33,5 +32,6 @@ export const texts = {
   button: {
     login: 'Войти',
     logout: 'Выйти',
+    addPlayLists: 'Добавить плейлист',
   },
 };

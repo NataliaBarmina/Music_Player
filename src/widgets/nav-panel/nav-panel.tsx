@@ -18,10 +18,6 @@ export const NavPanel = () => {
       <Link className={linkStyle} to="/playlist">
         {t('navigation.myPlaylists')}
       </Link>
-
-      <Link className={linkStyle} to="/playlists/add">
-        {t('navigation.addPlayLists')}
-      </Link>
     </div>
   );
 };
