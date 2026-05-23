@@ -1,7 +1,7 @@
 import { EditPlaylistIcon } from '@/shared/ui/icons';
 import { useNavigate } from '@tanstack/react-router';
 
-export const EditPlaylist = ({ playlistId }: { playlistId: string }) => {
+export const EditPlaylistButton = ({ playlistId }: { playlistId: string }) => {
   const navigate = useNavigate();
 
   return (

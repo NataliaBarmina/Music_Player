@@ -1,14 +1,17 @@
-import { useTranslation } from 'react-i18next';
-import { useAddPlaylistMutation } from '../api/use-add-playlist-mutation';
+import { useEditPlaylistData } from '../model/use-edit-playlist-data';
+import { useUpdatePlaylistMutation } from '../api/use-update-playlist-mutation';
 import { useNavigate } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 import { PlaylistForm } from '../../shared/ui/playlist-form';
 import type { PlaylistFormInputs } from '../../shared/types/types';
 
-export const AddPlayList = () => {
-  const { t } = useTranslation();
+export const EditPlaylist = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
-  const { mutateAsync } = useAddPlaylistMutation();
+  const { playlistTitle, playlistId } = useEditPlaylistData();
+
+  const { mutateAsync } = useUpdatePlaylistMutation(playlistId);
 
   const onSubmit = async (data: PlaylistFormInputs) => {
     await mutateAsync({
@@ -16,7 +19,8 @@ export const AddPlayList = () => {
         type: 'playlists',
         attributes: {
           title: data.playlistTitle,
-          description: '',
+          description: null,
+          tagIds: [],
         },
       },
     });
@@ -25,8 +29,8 @@ export const AddPlayList = () => {
 
   return (
     <PlaylistForm
-      pageTitle={t('playlists.addPlayList')}
-      placeholder={t('form.titlePlaceholder')}
+      pageTitle={t('playlists.editPlaylist')}
+      defaultTitle={playlistTitle}
       onSubmit={onSubmit}
     />
   );
