@@ -1,17 +1,20 @@
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { client } from '@/shared/api/client/client';
+import { playlistKeys } from '@/shared/api/keys-factories/playlist-keys-factories';
 
 export const usePlaylistsQuery = (userId?: string) => {
   const query = useQuery({
     refetchInterval: 5 * 60 * 1000,
-    queryKey: ['playlists', userId],
+
+    queryKey: playlistKeys.myList(userId),
+
+    enabled: Boolean(userId),
 
     queryFn: async ({ signal }) => {
       const response = await client.GET('/playlists', {
         params: {
           query: {
             userId,
-            enabled: Boolean(userId),
           },
         },
         signal,

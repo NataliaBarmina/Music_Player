@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { client } from '@/shared/api/client/client';
 import { tokenStorage } from '@/shared/api/token-storage';
+import { authKeys } from '@/shared/api/keys-factories/auth-keys-factories';
 
 //КАСТОМНЫЙ ХУК ДЛЯ LOGOUT
 
@@ -24,7 +25,7 @@ export const useLogoutMutation = () => {
     onSuccess: () => {
       tokenStorage.clearTokens();
       queryClient.resetQueries({
-        queryKey: ['auth', 'me'],
+        queryKey: authKeys.me(),
       });
     },
   });

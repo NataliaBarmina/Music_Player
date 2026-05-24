@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { tokenStorage } from '@/shared/api/token-storage';
 import { client } from '@/shared/api/client/client';
+import { authKeys } from '@/shared/api/keys-factories/auth-keys-factories';
 
 // ЗАПРАШИВАЕМ АВТОРИЗАЦИОННЫЕ ДАННЫЕ - объект с айди и логином пользователя
 
 export const useMeQuery = () => {
   return useQuery({
-    queryKey: ['auth', 'me'],
+    queryKey: authKeys.me(),
     retry: false, // не перезапрашивать данные, если придет ошибка
 
     queryFn: async () => {

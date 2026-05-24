@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { client } from '@/shared/api/client/client';
+import { tracksListKeys } from '@/shared/api/keys-factories/tracks-list-factories';
 
 export const useSelectedTrackQuery = (selectedTrackId: string) => {
   return useQuery({
-    queryKey: ['selectedTrack', selectedTrackId],
+    queryKey: tracksListKeys.detail(selectedTrackId),
 
     enabled: Boolean(selectedTrackId), // срабатывает только когда есть selectedTrackId
 

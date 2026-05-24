@@ -4,6 +4,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { CALLBACK_URL } from '@shared/api/apiConfig';
 import type { TCode, TData } from '../types/types';
 import { tokenStorage } from '@/shared/api/token-storage';
+import { authKeys } from '@/shared/api/keys-factories/auth-keys-factories';
 
 // КАСТОМНЫЙ ХУК ДЛЯ ЛОГИНИЗАЦИИ ПОЛЬЗОВАТЕЛЯ ПОСЛЕ OAuth
 
@@ -35,7 +36,7 @@ export const useLoginMutation = () => {
       tokenStorage.setTokens(data.accessToken, data.refreshToken);
 
       queryClient.invalidateQueries({
-        queryKey: ['auth', 'me'], // Сбрасываем кэш запроса ['auth', 'me'], чтобы запросить данные пользователя после логина.
+        queryKey: authKeys.me(), // Сбрасываем кэш запроса ['auth', 'me'], чтобы запросить данные пользователя после логина.
       });
     },
   });
