@@ -1,4 +1,5 @@
-import { ACCESS_TOKEN, REFRESH_TOKEN } from './apiConfig';
+export const ACCESS_TOKEN = 'access-token';
+export const REFRESH_TOKEN = 'refresh-token';
 
 export const tokenStorage = {
   get accessToken(): string | null {

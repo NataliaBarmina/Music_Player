@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { tokenStorage } from '@/shared/api/token-storage';
+import { tokenStorage } from '@/shared/config/token-storage';
 import { client } from '@/shared/api/client/client';
 import { authKeys } from '@/shared/api/keys-factories/auth-keys-factories';
 

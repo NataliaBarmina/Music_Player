@@ -1,4 +1,4 @@
-import { CALLBACK_URL } from '@shared/api/apiConfig';
+import { CALLBACK_URL } from '@/shared/config/apiConfig';
 import { useLoginMutation } from './use-login-mutation';
 
 //КАСТОМНЫЙ ХУК -ОРКЕСТРАТОР OAuth-ПРОЦЕССА НА КЛИЕНТЕ

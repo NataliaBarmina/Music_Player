@@ -1,6 +1,6 @@
 import { type Middleware } from 'openapi-fetch';
 import { refreshAccessToken } from './make-refresh-token';
-import { tokenStorage } from '../token-storage';
+import { tokenStorage } from '../../config/token-storage';
 
 // Функция для автоматического добавления access token в запросы, обновления токена
 

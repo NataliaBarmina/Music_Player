@@ -1,6 +1,6 @@
 import createClient from 'openapi-fetch';
 import type { paths } from './schema';
-import { API_KEY, BASE_URL } from '../apiConfig';
+import { API_KEY, BASE_URL } from '../../config/apiConfig';
 import { authMiddleware } from './auth-middleware';
 
 // НАСТРОЙКА КЛИЕНТА ДЛЯ ВСЕХ ЗАПРОСОВ ПРИЛОЖЕНИЯ (чтобы писать просто client.GET('/auth/me'))

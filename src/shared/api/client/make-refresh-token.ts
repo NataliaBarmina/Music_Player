@@ -1,5 +1,5 @@
-import { API_KEY, BASE_URL } from '../apiConfig';
-import { tokenStorage } from '../token-storage';
+import { API_KEY, BASE_URL } from '../../config/apiConfig';
+import { tokenStorage } from '../../config/token-storage';
 
 // ФУНКЦИЯ ДЛЯ ОБНОВЛЕНИЯ ACCESS ТОКЕНА С ПОМОЩЬЮ REFRESH ТОКЕНА
 
