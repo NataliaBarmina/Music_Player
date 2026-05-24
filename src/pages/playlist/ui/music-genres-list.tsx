@@ -22,19 +22,15 @@ export const MusicGenresList = ({ userId }: { userId: string }) => {
       {isLoading && <Preloader />}
       {isFetching && <RefreshingIndicator />}
 
-      {isSuccess && !data.playlists.length && <Warning text={t('playlists.emptyTracks')} />}
+      {isSuccess && !length && <Warning text={t('playlists.emptyTracks')} />}
 
       {isSuccess && (
         <ul>
           {length < 10 && <AddPlaylistButton />}
 
-          {data.playlists.map((playlist, i) => (
+          {data.playlists.map((playlist) => (
             <li key={playlist.id}>
-              <MusicGenreItem
-                title={playlist.attributes.title}
-                position={i + 1}
-                playlistId={playlist.id}
-              />
+              <MusicGenreItem title={playlist.attributes.title} playlistId={playlist.id} />
             </li>
           ))}
         </ul>

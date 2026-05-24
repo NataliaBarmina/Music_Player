@@ -1,11 +1,12 @@
 import { PlaylistActions } from '@/widgets/playlist-actions/playlist-actions';
 import type { TMusicGenreItem } from './types';
-import { containerStyle, numberStyle, playlistTitleStyle } from './styles';
+import { containerStyle, playlistTitleStyle } from './styles';
+import playlistBanner from '@/assets/reggae.png';
 
-export const MusicGenreItem = ({ title, position, playlistId }: TMusicGenreItem) => {
+export const MusicGenreItem = ({ title, playlistId }: TMusicGenreItem) => {
   return (
     <div className={containerStyle}>
-      <div className={numberStyle}>{position}</div>
+      <img src={playlistBanner} alt="#" className="object-contain w-20 mr-4 " />
       <div className={playlistTitleStyle}>
         <span>{title}</span>
       </div>
@@ -13,4 +14,3 @@ export const MusicGenreItem = ({ title, position, playlistId }: TMusicGenreItem)
     </div>
   );
 };
-// /10
