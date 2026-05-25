@@ -28,11 +28,17 @@ export const MusicGenresList = ({ userId }: { userId: string }) => {
         <ul>
           {length < 10 && <AddPlaylistButton />}
 
-          {data.playlists.map((playlist) => (
-            <li key={playlist.id}>
-              <MusicGenreItem title={playlist.attributes.title} playlistId={playlist.id} />
-            </li>
-          ))}
+          {data.playlists.map((playlist) => {
+            const coverURL = playlist.attributes.images.main?.[0]?.url;
+            const title = playlist.attributes.title;
+            const id = playlist.id;
+
+            return (
+              <li key={id}>
+                <MusicGenreItem title={title} playlistId={id} coverURL={coverURL} />
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

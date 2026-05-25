@@ -7,6 +7,7 @@ export const EditPlaylistButton = ({ playlistId }: { playlistId: string }) => {
   return (
     <button
       type="button"
+      className="icon"
       onClick={() =>
         navigate({
           to: '/playlists/$playlistId/edit',
