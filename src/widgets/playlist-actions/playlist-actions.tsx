@@ -1,7 +1,8 @@
-import { ReorderPlaylistIcon, DeleteCoverIcon } from '@/shared/ui/icons';
+import { ReorderPlaylistIcon } from '@/shared/ui/icons';
 import { DeletePlaylistButton } from '@/features/playlists';
 import { EditPlaylistButton } from '@/features/playlists';
 import { AddCoverButton } from '@/features/playlists';
+import { DeleteCoverButton } from '@/features/playlists';
 
 export const PlaylistActions = ({ playlistId }: { playlistId: string }) => {
   return (
@@ -17,7 +18,7 @@ export const PlaylistActions = ({ playlistId }: { playlistId: string }) => {
 
       <AddCoverButton playlistId={playlistId} />
 
-      <DeleteCoverIcon />
+      <DeleteCoverButton playlistId={playlistId} />
     </div>
   );
 };

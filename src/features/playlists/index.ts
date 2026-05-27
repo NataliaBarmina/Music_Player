@@ -5,3 +5,4 @@ export { AddPlayList } from './add-playlist/ui/add-playlist';
 export { AddPlaylistButton } from './add-playlist/ui/add-playlist-button';
 export { AddCoverButton } from './add-cover/ui/add-cover-button';
 export { AddCover } from './add-cover/ui/add-cover';
+export { DeleteCoverButton } from './delete-cover/ui/delete-cover-button';

@@ -1,8 +1,9 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { client } from '@/shared/api/client/client';
 import { playlistKeys } from '@/shared/api/keys-factories/playlist-keys-factories';
+import type { SchemaBinaryFile } from '@shared/api/client/schema';
 
-export const useAddCoverMutation = (playlistId: string) => {
+export const useAddCoverMutation = (playlistId: SchemaBinaryFile) => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -17,7 +18,8 @@ export const useAddCoverMutation = (playlistId: string) => {
             playlistId,
           },
         },
-        body: formData as unknown as { file: string },
+        // @ts-expect-error: openapi-typescript ошибочно требует JSON, но сервер ждёт multipart/form-data
+        body: formData,
       });
 
       if (response.error) {
