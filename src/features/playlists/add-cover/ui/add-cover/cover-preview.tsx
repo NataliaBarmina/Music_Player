@@ -1,9 +1,8 @@
-import playlistCover from '@/assets/folk.png';
 import { coverImageStyle } from './styles';
 import { useTranslation } from 'react-i18next';
 
-export const CoverPreview = () => {
+export const CoverPreview = ({ selectedCover }: { selectedCover: string }) => {
   const { t } = useTranslation();
 
-  return <img src={playlistCover} alt={t('cover.coverPreviewAlt')} className={coverImageStyle} />;
+  return <img src={selectedCover} alt={t('cover.coverPreviewAlt')} className={coverImageStyle} />;
 };

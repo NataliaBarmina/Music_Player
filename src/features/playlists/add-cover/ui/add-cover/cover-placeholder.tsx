@@ -1,4 +1,4 @@
-import playlistCover from '@/assets/playlist.png';
+import playlistCover from '@/assets/playlist.jpg';
 import { placeholderBackgroundStyle, textStyle } from './styles';
 import { useTranslation } from 'react-i18next';
 
