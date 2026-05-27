@@ -17,6 +17,12 @@ export const texts = {
     emptyTracks: 'У вас нет добавленных плейлистов',
     authRequiredToGetPlayList: 'Авторизуйтесь, чтобы получить плейлисты',
   },
+  cover: {
+    addCover: 'Добавление обложки плейлиста',
+    previewPlaceholder: 'Здесь вы можете посмотреть выбранную обложку',
+    coverPreviewAlt: 'Выбранная обложка плейлиста',
+  },
+
   navigation: {
     tracksList: '𝄞 СПИСОК ТРЕКОВ',
     myPlaylists: '☰ МОИ ПЛЕЙЛИСТЫ',
@@ -33,5 +39,6 @@ export const texts = {
     login: 'Войти',
     logout: 'Выйти',
     addPlayLists: 'Добавить плейлист',
+    chooseCover: 'Выбрать обложку',
   },
 };
