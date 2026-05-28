@@ -1,21 +1,21 @@
-import { BadgeCircle, Cross, ViewBox, Plus, Cover } from './components';
+import { BadgeCircle, Cross, IconWrapper, Plus, Cover } from './components';
 import { BADGE_COLORS } from './constants';
 
 export function AddCoverIcon() {
   return (
-    <ViewBox>
+    <IconWrapper>
       <Cover />
       <BadgeCircle color={BADGE_COLORS.edit} />
       <Plus />
-    </ViewBox>
+    </IconWrapper>
   );
 }
 export function DeleteCoverIcon() {
   return (
-    <ViewBox>
+    <IconWrapper>
       <Cover />
       <BadgeCircle color={BADGE_COLORS.delete} />
       <Cross />
-    </ViewBox>
+    </IconWrapper>
   );
 }

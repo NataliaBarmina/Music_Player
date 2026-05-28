@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { COLORS } from './constants';
 
-export const ViewBox = ({ children }: { children: ReactNode }) => {
+export const IconWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <svg width={38} height={38} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
       {children}
@@ -83,13 +83,43 @@ export const Plus = () => {
 export const Cover = () => {
   return (
     <>
-      <rect x="6" y="9" width="32" height="30" rx="5" fill={COLORS.coverBackground} />
-      <rect x="6" y="9" width="32" height="30" rx="5" stroke={COLORS.border} strokeWidth="1" />
+      <rect x="6" y="9" width="28" height="32" rx="5" fill={COLORS.coverBackground} />
+      <rect x="6" y="9" width="28" height="32" rx="5" stroke={COLORS.border} strokeWidth="1" />
 
       <circle cx="16" cy="18" r="4" fill={COLORS.coverSun} />
       <path
         d="M9 34L18 25L25 32L29 28L38 37H11C9.9 37 9 36.1 9 35V34Z"
         fill={COLORS.coverMountain}
+      />
+    </>
+  );
+};
+
+export const ReorderLine = ({ path }: { path: string }) => {
+  return (
+    <>
+      <path d={path} stroke={COLORS.border} strokeWidth="1.2" strokeLinecap="round" />
+    </>
+  );
+};
+
+export const ReorderArrow = ({
+  arrowLinePath,
+  arrowHeadPath,
+}: {
+  arrowLinePath: string;
+  arrowHeadPath: string;
+}) => {
+  return (
+    <>
+      <rect x="10" y="9" width="28" height="32" rx="4.5" fill={COLORS.playlistBackground} />
+      <path d={arrowLinePath} stroke={COLORS.border} strokeWidth="3" strokeLinecap="round" />
+      <path
+        d={arrowHeadPath}
+        stroke={COLORS.border}
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </>
   );
