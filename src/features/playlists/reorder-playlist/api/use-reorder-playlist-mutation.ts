@@ -1,1 +1,3 @@
-export const useReorderPlaylistMutation = () => {};
+export const useReorderPlaylistMutation = (playlistId: string) => {
+  console.log(playlistId);
+};

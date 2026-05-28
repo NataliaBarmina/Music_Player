@@ -15,14 +15,15 @@ export type TReorderPlaylistButton = {
 export const ReorderPlaylistButton = ({ playlistId, direction }: TReorderPlaylistButton) => {
   // const { mutate, isPending } = useReorderPlaylistMutation(playlistId);
   const isPending = false;
+  useReorderPlaylistMutation(playlistId);
 
-  const handleDeletePlaylist = () => {
+  const handleReorderPlaylist = () => {
     // mutate();
-    alert(playlistId);
+    console.log('fj');
   };
 
   return (
-    <button type="button" disabled={isPending} onClick={handleDeletePlaylist} className="icon">
+    <button type="button" disabled={isPending} onClick={handleReorderPlaylist} className="icon">
       {direction === 'down' && <ReorderDownIcon />}
       {direction === 'up' && <ReorderUpIcon />}
     </button>
