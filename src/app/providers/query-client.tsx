@@ -6,12 +6,15 @@ export const queryClient = new QueryClient({
     queries: {
       staleTime: Infinity, //сколько времени данные считаются свежими
       gcTime: 5 * 60 * 1000, // через сколько неиспользуемый кэш будет удалён
-      refetchOnMount: true, // делать ли повторный запрос при монтировании компонента
-      refetchOnWindowFocus: true, // делать ли повторный запрос при возврате на вкладку
-      refetchOnReconnect: true, // делать ли повторный запрос при восстановлении интернета
-      refetchInterval: 0, // автообновление
-      // retry: 0, // количество повторных попыток запроса, если он завершился ошибкой
+      refetchOnMount: false, // делать ли повторный запрос при монтировании компонента
+      refetchOnWindowFocus: false, // делать ли повторный запрос при возврате на вкладку
+      refetchOnReconnect: false, // делать ли повторный запрос при восстановлении интернета
+      refetchInterval: false, // автообновление
+      retry: false, // количество повторных попыток запроса, если он завершился ошибкой
       // refetchIntervalInBackground: false, // обновлять даже если вкладка неактивна
+    },
+    mutations: {
+      retry: false,
     },
   },
 });
