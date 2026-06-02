@@ -89,3 +89,8 @@ h2 {
 .icon:hover {
   background-color: rgba(20, 83, 45, 0.4);
 }
+
+.icon:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

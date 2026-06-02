@@ -4,5 +4,7 @@ import { useMeQuery } from '@/features/auth';
 export const usePlaylists = () => {
   const { data } = useMeQuery();
 
-  return usePlaylistsQuery(data?.userId);
+  const playlists = usePlaylistsQuery(data?.userId);
+
+  return playlists.playlists;
 };

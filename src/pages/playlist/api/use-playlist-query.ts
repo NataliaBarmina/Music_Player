@@ -23,8 +23,9 @@ export const usePlaylistsQuery = (userId?: string) => {
         throw (response as unknown as { error: Error }).error;
       }
 
+      const playlists = response.data?.data ?? [];
       return {
-        playlists: response.data?.data ?? [],
+        playlists: playlists.toSorted((a, b) => a.attributes.order - b.attributes.order),
       };
     },
 

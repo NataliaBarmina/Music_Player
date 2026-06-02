@@ -1,31 +1,36 @@
 import { useReorderPlaylistMutation } from '../api/use-reorder-playlist-mutation';
 import { ReorderDownIcon, ReorderUpIcon } from '@/shared/ui/icons/playlist-icon';
-
-export type TReorderPlaylistButton = {
-  playlistId: string;
-  direction: 'up' | 'down';
-};
-
-//todo - получить все плейлисты - usePlaylists
-//todo - сюда должен приходить еще и индекс
-//todo - в зависимости от того, что приходит в direction меняем находим индекс соседнего компонента
-//todo - по индексу находим айдишник соседнего компонента
-//todo - найденный айдишник передаем в тело запроса
+import type { TReorderPlaylistButton } from '../model/types';
+import { getReorderPayload } from '../model/get-reorder-payload';
+import { usePlaylists } from '../../shared/model/use-playlist';
 
 export const ReorderPlaylistButton = ({ playlistId, direction }: TReorderPlaylistButton) => {
-  // const { mutate, isPending } = useReorderPlaylistMutation(playlistId);
-  const isPending = false;
-  useReorderPlaylistMutation(playlistId);
+  const { mutate, isPending } = useReorderPlaylistMutation(playlistId);
+
+  const playlists = usePlaylists();
+
+  const selectedPlaylistIndex = playlists.findIndex((item) => item.id === playlistId);
+  if (selectedPlaylistIndex === -1) return;
+
+  const isMovingUp = direction === 'up';
+  const isMovingDown = direction === 'down';
+
+  const isDisabled =
+    isPending ||
+    (isMovingUp && selectedPlaylistIndex === 0) ||
+    (isMovingDown && selectedPlaylistIndex === playlists.length - 1);
 
   const handleReorderPlaylist = () => {
-    // mutate();
-    console.log('fj');
+    const payload = getReorderPayload({ isMovingUp, selectedPlaylistIndex, playlists });
+
+    if (!payload) return;
+
+    mutate(payload);
   };
 
   return (
-    <button type="button" disabled={isPending} onClick={handleReorderPlaylist} className="icon">
-      {direction === 'down' && <ReorderDownIcon />}
-      {direction === 'up' && <ReorderUpIcon />}
+    <button type="button" disabled={isDisabled} onClick={handleReorderPlaylist} className="icon">
+      {isMovingUp ? <ReorderUpIcon /> : <ReorderDownIcon />}
     </button>
   );
 };
