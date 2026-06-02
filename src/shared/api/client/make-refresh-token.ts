@@ -1,5 +1,6 @@
-import { API_KEY, BASE_URL } from '../../config/apiConfig';
+import { BASE_URL } from '../../config/apiConfig';
 import { tokenStorage } from '../../config/token-storage';
+import { getApiKeyHeaders } from './get-api-key-headers';
 
 // ФУНКЦИЯ ДЛЯ ОБНОВЛЕНИЯ ACCESS ТОКЕНА С ПОМОЩЬЮ REFRESH ТОКЕНА
 
@@ -17,7 +18,7 @@ export function refreshAccessToken() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'api-key': API_KEY,
+          ...getApiKeyHeaders(),
         },
         body: JSON.stringify({ refreshToken }),
       });

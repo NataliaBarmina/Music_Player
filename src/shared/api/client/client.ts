@@ -1,7 +1,8 @@
 import createClient from 'openapi-fetch';
 import type { paths } from './schema';
-import { API_KEY, BASE_URL } from '../../config/apiConfig';
+import { BASE_URL } from '../../config/apiConfig';
 import { authMiddleware } from './auth-middleware';
+import { getApiKeyHeaders } from './get-api-key-headers';
 
 // НАСТРОЙКА КЛИЕНТА ДЛЯ ВСЕХ ЗАПРОСОВ ПРИЛОЖЕНИЯ (чтобы писать просто client.GET('/auth/me'))
 
@@ -10,9 +11,11 @@ import { authMiddleware } from './auth-middleware';
 // 3) Указывается базовый URL, заголовки
 // 4) При создании клиента к нему подключается middleware
 
+// добавляем api-key только при dev сборке
+
 export const client = createClient<paths>({
   baseUrl: BASE_URL,
-  headers: { 'api-key': API_KEY },
+  headers: getApiKeyHeaders(),
 });
 
 client.use(authMiddleware);
