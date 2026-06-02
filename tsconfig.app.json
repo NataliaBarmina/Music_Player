@@ -25,10 +25,7 @@
     "noUncheckedSideEffectImports": true,
     "noUncheckedIndexedAccess": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@shared/*": ["./src/shared/*"],
-      "@pages/*": ["./src/pages/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"]

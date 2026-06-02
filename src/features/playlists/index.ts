@@ -1,9 +1,11 @@
-export { EditPlaylistButton } from './edit-playlist/ui/edit-playlist-button';
-export { EditPlaylist } from './edit-playlist/ui/edit-play-list';
-export { DeletePlaylistButton } from './delete-playlist/ui/delete-playlist';
-export { AddPlayList } from './add-playlist/ui/add-playlist';
-export { AddPlaylistButton } from './add-playlist/ui/add-playlist-button';
-export { AddCoverButton } from './add-cover/ui/add-cover-button';
-export { AddCover } from './add-cover/ui/add-cover';
-export { DeleteCoverButton } from './delete-cover/ui/delete-cover-button';
-export { ReorderPlaylistButton } from './reorder-playlist/ui/reorder-playlist-button';
+export { EditPlaylistButton, EditPlaylist } from './edit-playlist';
+
+export { DeletePlaylistButton } from './delete-playlist';
+
+export { ReorderPlaylistButton } from './reorder-playlist';
+
+export { AddPlayList, AddPlaylistButton } from './add-playlist';
+
+export { AddCoverButton, AddCover } from './add-cover';
+
+export { DeleteCoverButton } from './delete-cover';
