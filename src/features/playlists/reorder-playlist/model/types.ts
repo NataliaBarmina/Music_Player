@@ -1,4 +1,4 @@
-import type { SchemaPlaylistListItemResource } from '@shared/api/client/schema';
+import type { SchemaPlaylistListItemResource } from '@/shared/api/client/schema';
 
 export type TGetReorderPayload = {
   isMovingUp: boolean;

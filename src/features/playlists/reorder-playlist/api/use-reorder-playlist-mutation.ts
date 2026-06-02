@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { client } from '@shared/api/client/client';
+import { client } from '@/shared/api/client/client';
 import { playlistKeys } from '@/shared/api/keys-factories/playlist-keys-factories';
-import type { SchemaReorderPlaylistsRequestPayload } from '@shared/api/client/schema';
+import type { SchemaReorderPlaylistsRequestPayload } from '@/shared/api/client/schema';
 
 export const useReorderPlaylistMutation = (playlistId: string) => {
   const queryClient = useQueryClient();
