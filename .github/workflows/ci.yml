@@ -21,6 +21,7 @@ jobs:
     env:
       VITE_BASE_URL: https://musicfun.it-incubator.app/api/1.0
       VITE_CALLBACK_URL: https://nataliabarmina.github.io/Music_Player/oauth-callback
+      VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
 
     steps:
       - name: Checkout repository
