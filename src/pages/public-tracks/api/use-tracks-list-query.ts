@@ -5,7 +5,6 @@ import { tracksListKeys } from '@/shared/api/keys-factories/tracks-list-factorie
 
 export const useTracksListQuery = ({ page, search }: TUseTracksListQuery) => {
   const query = useQuery({
-    refetchInterval: 5 * 60 * 1000,
     queryKey: tracksListKeys.list({ page, search }), //при большом количестве параметров объединять их в объекты - поможет избежать путаницы
 
     queryFn: async ({ signal }) => {

@@ -13,13 +13,22 @@ import { useTracksListQuery } from '../api/use-tracks-list-query';
 export const TracksList = () => {
   const { t } = useTranslation();
 
-  const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+
+  // чтобы запрос уходил не на каждый символ, а после 500 мс после остановки ввода
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [search]);
 
   useEffect(() => {
     setPage(1);
-  }, [search]);
+  }, [debouncedSearch]);
 
   const {
     data: { tracks = [], pagesCount = 0 } = {},
@@ -39,7 +48,7 @@ export const TracksList = () => {
 
       <SearchField search={search} setSearch={setSearch} />
 
-      {isSuccess && !selectedTrackId && (
+      {isSuccess && (
         <div className="w-full">
           <h1>{t('tracks.title')}</h1>
 
@@ -52,7 +61,6 @@ export const TracksList = () => {
                 id={track.id}
                 title={track.attributes.title.slice(0, 40)}
                 url={track.attributes.attachments?.[0]?.url}
-                setSelectedTrackId={setSelectedTrackId}
               />
             ))}
           </ul>
